@@ -88,6 +88,16 @@ gulp.task('build', [
 ]);
 
 /*
+* Macro task to cleaning the dist directory
+*/
+gulp.task('cleaning', [
+    'clean:html',
+    'clean:scripts',
+    'clean:styles',
+    'clean:images'
+]);
+
+/*
 * Default task, builds everything
 */
-gulp.task('default', ['build']);
+gulp.task('default', ['cleaning', 'build']);
