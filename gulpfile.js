@@ -75,4 +75,13 @@ gulp.task('images', ['clean:images'], function(){
         .pipe(gulp.dest(paths.dist + '/img'));
 });
 
-gulp.task('default', ['html', 'scripts', 'styles']);
+gulp.task('build', [
+    'lint',
+    'html',
+    'images',
+    'scripts',
+    'styles'
+]);
+
+
+gulp.task('default', ['build']);
