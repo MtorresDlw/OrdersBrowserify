@@ -1,4 +1,13 @@
-const gulp = require('gulp');
+const gulp      = require('gulp'),
+      uglify    = require('gulp-uglify'),
+      connect   = require('gulp-connect'),
+      buffer    = require('vinyl-buffer'),
+      source    = require('vinyl-source-stream'),
+      less      = require('gulp-less'),
+      del       = require('del'),
+      util      = require('gulp-util'),
+      jshint    = require('gulp-jshint')
+
 
 //return all html files into all app directories
 gulp.task('html', function(){
