@@ -17,6 +17,25 @@ var paths = {
     images  : './app/img/*.*'
 };
 
+/*
+* Cleans the dist directory
+*/
+gulp.task('clean:scripts', function(cb){
+    del(paths.dist + '/js', cb);
+});
+
+gulp.task('clean:styles', function(cb){
+    del(paths.dist + '/css', cb);
+});
+
+gulp.task('clean:images', function(cb){
+    del(paths.dist + '/img', cb);
+});
+
+gulp.task('clean:html', function(cb){
+    del(paths.dist + '/**/*.html', cb);
+});
+
 //return all html files into all app directories
 gulp.task('html', function(){
     return gulp.src(['./app/*.html', './app/**/*.html'])
