@@ -7,7 +7,8 @@ const gulp      = require('gulp'),
       del       = require('del'),
       util      = require('gulp-util'),
       jshint    = require('gulp-jshint'),
-      concat    = require('gulp-concat')
+      concat    = require('gulp-concat'),
+      watch     = require('gulp-watch')
 
 //mutualisation des chemins
 var paths = {
@@ -76,6 +77,17 @@ gulp.task('images', function(){
 });
 
 /*
+* Watches any change in source code and updates
+* the dist directory in real time
+*/
+gulp.task('watch', function(){
+    gulp.watch(paths.scripts, ['lint', 'scripts']);
+    gulp.watch(paths.styles, ['styles']);
+    gulp.watch(paths.html, ['html']);
+    gulp.watch(paths.images, ['images']);
+});
+
+/*
 * Macro task to re-build the dist directory
 */
 gulp.task('build', [
@@ -99,4 +111,4 @@ gulp.task('cleaning', [
 /*
 * Default task, builds everything
 */
-gulp.task('default', ['cleaning', 'build']);
+gulp.task('default', ['cleaning', 'build', 'watch']);
