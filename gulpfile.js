@@ -1,14 +1,15 @@
-const gulp      = require('gulp'),
-      uglify    = require('gulp-uglify'),
-      connect   = require('gulp-connect'),
-      buffer    = require('vinyl-buffer'),
-      source    = require('vinyl-source-stream'),
-      less      = require('gulp-less'),
-      del       = require('del'),
-      util      = require('gulp-util'),
-      jshint    = require('gulp-jshint'),
-      concat    = require('gulp-concat'),
-      watch     = require('gulp-watch')
+const gulp          = require('gulp'),
+      uglify        = require('gulp-uglify'),
+      connect       = require('gulp-connect'),
+      buffer        = require('vinyl-buffer'),
+      source        = require('vinyl-source-stream'),
+      less          = require('gulp-less'),
+      del           = require('del'),
+      util          = require('gulp-util'),
+      jshint        = require('gulp-jshint'),
+      concat        = require('gulp-concat'),
+      watch         = require('gulp-watch'),
+      browserSync   = require('browser-sync').create()
 
 //mutualisation des chemins
 var paths = {
@@ -77,14 +78,25 @@ gulp.task('images', function(){
 });
 
 /*
-* Watches any change in source code and updates
-* the dist directory in real time
-*/
-gulp.task('watch', function(){
-    gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.styles, ['styles']);
-    gulp.watch(paths.html, ['html']);
-    gulp.watch(paths.images, ['images']);
+ * Synchronizes the browser with the 'dist' directory
+ */
+gulp.task('serve', ['build'], function(){
+    browserSync.init({
+        notify: false,
+        port: 8080,
+        server: {
+            baseDir: ['dist']
+        }
+    });
+
+    /*
+    * Watches any change in source code and updates
+    * the dist directory in real time
+    */
+    gulp.watch(paths.scripts, ['lint', 'scripts']).on("change", browserSync.reload);
+    gulp.watch(paths.styles, ['styles']).on("change", browserSync.reload);
+    gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
+    gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
 
 /*
@@ -111,4 +123,4 @@ gulp.task('cleaning', [
 /*
 * Default task, builds everything
 */
-gulp.task('default', ['cleaning', 'build', 'watch']);
+gulp.task('default', ['cleaning', 'build']);
