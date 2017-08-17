@@ -8,6 +8,14 @@ const gulp      = require('gulp'),
       util      = require('gulp-util'),
       jshint    = require('gulp-jshint')
 
+//mutualisation des chemins
+var paths = {
+    dist    : './dist',
+    scripts : './app/**/*.js',
+    styles  : './app/css/**/*.less',
+    html    : './app/**/*.html',
+    images  : './app/img/*.*'
+};
 
 //return all html files into all app directories
 gulp.task('html', function(){
