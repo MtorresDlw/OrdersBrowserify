@@ -49,9 +49,10 @@ gulp.task('scripts', function(){
 });
 
 //return stylesheets
-gulp.task('styles', function(){
-    return gulp.src('./app/css/**/*.css')
-        .pipe(gulp.dest('./dist/css'));
+gulp.task('styles', ['clean:styles'], function(){
+    return gulp.src(paths.styles)
+        .pipe(less())
+        .pipe(gulp.dest(paths.dist + '/css'));
 });
 
 gulp.task('default', ['html', 'scripts', 'styles']);
