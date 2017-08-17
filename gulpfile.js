@@ -7,14 +7,15 @@ const gulp      = require('gulp'),
       del       = require('del'),
       util      = require('gulp-util'),
       jshint    = require('gulp-jshint'),
-      concat    = require('gulp-concat')
+      concat    = require('gulp-concat'),
+      rename    = require('gulp-rename')
 
 //mutualisation des chemins
 var paths = {
     dist    : './dist',
-    scripts : './app/**/*.js',
+    scripts : './app/scripts/**/*.js',
     styles  : './app/css/**/*.less',
-    html    : './app/**/*.html',
+    html    : './app/*.html',
     images  : './app/img/*.*'
 };
 
@@ -49,7 +50,7 @@ gulp.task('lint', function(){
 /*
 * Concatenates & uglifies JS Scripts into a single file
 */
-gulp.task('scripts', ['clean:scripts'], function(){
+gulp.task('scripts', function(){
     return gulp.src(paths.scripts)
         .pipe(uglify())
         .pipe(concat('scripts.min.js'))
@@ -57,24 +58,27 @@ gulp.task('scripts', ['clean:scripts'], function(){
 });
 
 //return all html files into all app directories
-gulp.task('html', ['clean:html'], function(){
+gulp.task('html', function(){
     return gulp.src([paths.html])
         .pipe(gulp.dest(paths.dist));
 });
 
 //return stylesheets
-gulp.task('styles', ['clean:styles'], function(){
+gulp.task('styles', function(){
     return gulp.src(paths.styles)
         .pipe(less())
         .pipe(gulp.dest(paths.dist + '/css'));
 });
 
 //return images files to dist directory
-gulp.task('images', ['clean:images'], function(){
+gulp.task('images', function(){
     return gulp.src(paths.images)
         .pipe(gulp.dest(paths.dist + '/img'));
 });
 
+/*
+* Macro task to re-build the dist directory
+*/
 gulp.task('build', [
     'lint',
     'html',
@@ -83,5 +87,7 @@ gulp.task('build', [
     'styles'
 ]);
 
-
+/*
+* Default task, builds everything
+*/
 gulp.task('default', ['build']);
