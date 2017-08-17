@@ -7,8 +7,7 @@ const gulp      = require('gulp'),
       del       = require('del'),
       util      = require('gulp-util'),
       jshint    = require('gulp-jshint'),
-      concat    = require('gulp-concat'),
-      rename    = require('gulp-rename')
+      concat    = require('gulp-concat')
 
 //mutualisation des chemins
 var paths = {
