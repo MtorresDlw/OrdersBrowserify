@@ -58,8 +58,8 @@ gulp.task('scripts', ['clean:scripts'], function(){
 
 //return all html files into all app directories
 gulp.task('html', ['clean:html'], function(){
-    return gulp.src(['./app/*.html', './app/**/*.html'])
-        .pipe(gulp.dest('./dist'));
+    return gulp.src([paths.html])
+        .pipe(gulp.dest(paths.dist));
 });
 
 //return stylesheets
