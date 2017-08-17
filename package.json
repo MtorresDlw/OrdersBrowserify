@@ -1,0 +1,22 @@
+{
+  "name": "ordersbrowserify",
+  "version": "0.0.1",
+  "description": "Application de Notifications",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://miguel.torres@delawareconsulting.com:Gsinet_Dlw_Mt0@github.com/MtorresDlw/OrdersBrowserify.git"
+  },
+  "keywords": [
+    "orders"
+  ],
+  "author": "mtorres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MtorresDlw/OrdersBrowserify/issues"
+  },
+  "homepage": "https://github.com/MtorresDlw/OrdersBrowserify#readme"
+}
