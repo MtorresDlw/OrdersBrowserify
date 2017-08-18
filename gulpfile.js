@@ -1,16 +1,24 @@
 const gulp          = require('gulp'),
       uglify        = require('gulp-uglify'),
       connect       = require('gulp-connect'),
-      buffer        = require('vinyl-buffer'),
-      source        = require('vinyl-source-stream'),
       less          = require('gulp-less'),
       del           = require('del'),
       util          = require('gulp-util'),
       jshint        = require('gulp-jshint'),
       concat        = require('gulp-concat'),
       watch         = require('gulp-watch'),
+
+      //BrowserSync
       browserSync   = require('browser-sync').create(),
-      browserify    = require('browserify')
+
+      //Browserify + Watchify
+      browserify    = require('browserify'),
+      watchify      = require('watchify'),
+      buffer        = require('vinyl-buffer'),
+      source        = require('vinyl-source-stream'),
+      sourcemaps    = require('gulp-sourcemaps'),
+      assign        = require('lodash.assign')
+
 
 //mutualisation des chemins
 var paths = {
