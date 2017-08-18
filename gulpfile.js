@@ -97,7 +97,7 @@ gulp.task('serve', ['build'], function(){
     * Watches any change in source code and updates
     * the dist directory in real time
     */
-    gulp.watch(paths.scripts, ['lint', 'scripts']).on("change", browserSync.reload);
+    gulp.watch(paths.scripts, ['lint', 'browserify']).on("change", browserSync.reload);
     gulp.watch(paths.styles, ['styles']).on("change", browserSync.reload);
     gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
@@ -117,9 +117,9 @@ gulp.task('browserify', function(){
 */
 gulp.task('build', [
     'lint',
+    'browserify',
     'html',
     'images',
-    'scripts',
     'styles'
 ]);
 
