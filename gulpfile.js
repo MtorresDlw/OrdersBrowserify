@@ -121,6 +121,44 @@ gulp.task('browserify', function(){
 });
 
 /*
+* Options Browserify
+*/
+var customOpts = {
+    entries: ['./app/app.js'],
+    debug: true
+};
+
+/*
+* Utilisation du module lodash.assign pour fusionner
+* les options browserify et watchify dans un même objet
+*/
+var opts = assign({}, watchify.args, customOpts);
+
+//Initialisation de Watchify
+var bundler = watchify(browserify(opts));
+
+bundler.on('update', bundle); //listener sur l'évènement 'update' pour maj le bundle
+bundler.on('log', gutil.log); //log les sorties du bundler sur le terminal
+gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assemble le bundle
+
+function bundle() {
+    return bundler.bundle()
+        //log les erreurs quand elles surviennent
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .pipe(source('bundle.js'))
+        //optionnel, permet de bufferiser le contenu des fichiers pour améliorer les perf du build
+        .pipe(buffer())
+        //optionnel, permet d'ajouter les sourcemaps pour le debug
+        .pipe(sourcemaps.init({loadMaps: true}))
+        //Ecrit les fichiers .map
+        .pipe(sourcemaps.write('./'))
+        //Copie le tout dans le répertoire final
+        .pipe(gulp.dest(paths.dist))
+        //Stream le résultat à BrowserSync pour qu'il recharge auto la page
+        .pipe(browserSync.stream());
+}
+
+/*
 * Macro task to re-build the dist directory
 */
 gulp.task('build', [
