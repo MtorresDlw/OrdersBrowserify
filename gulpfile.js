@@ -3,7 +3,7 @@ const gulp          = require('gulp'),
       connect       = require('gulp-connect'),
       less          = require('gulp-less'),
       del           = require('del'),
-      util          = require('gulp-util'),
+      gutil          = require('gulp-util'),
       jshint        = require('gulp-jshint'),
       concat        = require('gulp-concat'),
       watch         = require('gulp-watch'),
@@ -105,26 +105,17 @@ gulp.task('serve', ['build'], function(){
     * Watches any change in source code and updates
     * the dist directory in real time
     */
-    gulp.watch(paths.scripts, ['lint', 'browserify']).on("change", browserSync.reload);
-    gulp.watch(paths.styles, ['styles']).on("change", browserSync.reload);
+    gulp.watch(paths.scripts, ['lint', 'scripts']);
+    gulp.watch(paths.styles, ['styles']);
     gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
-});
-
-/*
-* Browserify
-*/
-gulp.task('browserify', function(){
-    return browserify('./app/scripts/app.js').bundle()
-        .pipe(source('bundle.js'))
-        .pipe(gulp.dest('./dist'));
 });
 
 /*
 * Options Browserify
 */
 var customOpts = {
-    entries: ['./app/app.js'],
+    entries: ['./app/scripts/app.js'],
     debug: true
 };
 
@@ -163,7 +154,7 @@ function bundle() {
 */
 gulp.task('build', [
     'lint',
-    'browserify',
+    'scripts',
     'html',
     'images',
     'styles'
