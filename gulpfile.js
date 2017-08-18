@@ -9,7 +9,8 @@ const gulp          = require('gulp'),
       jshint        = require('gulp-jshint'),
       concat        = require('gulp-concat'),
       watch         = require('gulp-watch'),
-      browserSync   = require('browser-sync').create()
+      browserSync   = require('browser-sync').create(),
+      browserify    = require('browserify')
 
 //mutualisation des chemins
 var paths = {
@@ -100,6 +101,15 @@ gulp.task('serve', ['build'], function(){
     gulp.watch(paths.styles, ['styles']).on("change", browserSync.reload);
     gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
+});
+
+/*
+* Browserify
+*/
+gulp.task('browserify', function(){
+    return browserify('./app/scripts/app.js').bundle()
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('./dist'));
 });
 
 /*
