@@ -82,9 +82,12 @@ gulp.task('images', function(){
  */
 gulp.task('serve', ['build'], function(){
     browserSync.init({
+        name: 'localhost',
         notify: false,
         port: 8080,
+        browser: "chrome",
         server: {
+            //server files from the dist directory
             baseDir: ['dist']
         }
     });
