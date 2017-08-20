@@ -3,7 +3,7 @@ const gulp          = require('gulp'),
       connect       = require('gulp-connect'),
       less          = require('gulp-less'),
       del           = require('del'),
-      gutil          = require('gulp-util'),
+      gutil         = require('gulp-util'),
       jshint        = require('gulp-jshint'),
       concat        = require('gulp-concat'),
       watch         = require('gulp-watch'),
@@ -22,11 +22,13 @@ const gulp          = require('gulp'),
 
 //mutualisation des chemins
 var paths = {
+    app     : './app',
     dist    : './dist',
     scripts : './app/scripts/**/*.js',
-    styles  : './app/css/**/*.less',
-    html    : './app/*.html',
-    images  : './app/img/*.*'
+    styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
+    html    : ['./app/*.html', './app/**/*.html'],
+    images  : './app/img/*.*',
+    fonts   : './node_modules/font-awesome/fonts/**'
 };
 
 /*
@@ -64,20 +66,20 @@ gulp.task('scripts', function(){
     return gulp.src(paths.scripts)
         .pipe(uglify())
         .pipe(concat('scripts.min.js'))
-        .pipe(gulp.dest(paths.dist + '/js'));
+        .pipe(gulp.dest(paths.app + '/scripts'));
 });
 
 //return all html files into all app directories
 gulp.task('html', function(){
-    return gulp.src([paths.html])
-        .pipe(gulp.dest(paths.dist));
+    return gulp.src([paths.html[0], paths.html[1]])
+        .pipe(connect.reload);
 });
 
 //return stylesheets
 gulp.task('styles', function(){
-    return gulp.src(paths.styles)
+    return gulp.src(paths.styles[0], paths.styles[1])
         .pipe(less())
-        .pipe(gulp.dest(paths.dist + '/css'));
+        .pipe(gulp.dest(paths.app + '/css'));
 });
 
 //return images files to dist directory
@@ -85,6 +87,19 @@ gulp.task('images', function(){
     return gulp.src(paths.images)
         .pipe(gulp.dest(paths.dist + '/img'));
 });
+
+//return fonts Awesome
+gulp.task('fonts', function(){
+    return gulp.src(paths.fonts)
+        .pipe(gulp.dest(paths.app + '/fonts'));
+});
+
+//return css fonts Awesome
+gulp.task('fontawesome', function(){
+    return gulp.src('./node_modules/font-awesome/css/font-awesome.css')
+        .pipe(gulp.dest(paths.app + '/css'));
+});
+
 
 /*
  * Synchronizes the browser with the 'dist' directory
@@ -149,6 +164,10 @@ function bundle() {
         .pipe(browserSync.stream());
 }
 
+/**************************************************************************************************
+/******* MACROS TASK
+/**************************************************************************************************
+
 /*
 * Macro task to re-build the dist directory
 */
@@ -170,7 +189,12 @@ gulp.task('cleaning', [
     'clean:images'
 ]);
 
+/**************************************************************************************************
+/******* BUILDS EXEC TASK
+/**************************************************************************************************
+
 /*
 * Default task, builds everything
 */
 gulp.task('default', ['cleaning', 'build']);
+
