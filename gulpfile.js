@@ -7,6 +7,7 @@ const gulp          = require('gulp'),
       jshint        = require('gulp-jshint'),
       concat        = require('gulp-concat'),
       watch         = require('gulp-watch'),
+      templateCache = require('gulp-angular-templatecache'),
 
       //BrowserSync
       browserSync   = require('browser-sync').create(),
@@ -31,6 +32,22 @@ var paths = {
     fonts   : './node_modules/font-awesome/fonts/**'
 };
 
+/**************************************************************************************************
+/******* TASKS RUNNER - GULP TEMPLATES
+/**************************************************************************************************/
+
+gulp.task('templates', function(){
+    return gulp.src('./app/views/*.html', './app/views/partials/*.html')
+        .pipe(templateCache({
+            standalone: true
+    }))
+        .pipe(gulp.dest(paths.app + '/scripts'));
+});
+
+/**************************************************************************************************
+/******* TASKS RUNNER - CLEANS THE "DIST" DIRECTORY
+/**************************************************************************************************/
+
 /*
 * Cleans the dist directory
 */
@@ -49,6 +66,10 @@ gulp.task('clean:images', function(cb){
 gulp.task('clean:html', function(cb){
     del(paths.dist + '/**/*.html', cb);
 });
+
+/**************************************************************************************************
+/******* TASKS RUNNER
+/**************************************************************************************************/
 
 /*
 * Checks the validity of JS Code
@@ -71,8 +92,8 @@ gulp.task('scripts', function(){
 
 //return all html files into all app directories
 gulp.task('html', function(){
-    return gulp.src([paths.html[0], paths.html[1]])
-        .pipe(connect.reload);
+    return gulp.src('./app/*.html', './app/**/*.html')
+        .pipe(connect.reload());
 });
 
 //return stylesheets
@@ -100,6 +121,9 @@ gulp.task('fontawesome', function(){
         .pipe(gulp.dest(paths.app + '/css'));
 });
 
+/**************************************************************************************************
+/******* CONNEXION SERVER
+/**************************************************************************************************/
 
 /*
  * Synchronizes the browser with the 'dist' directory
@@ -112,7 +136,7 @@ gulp.task('serve', ['build'], function(){
         browser: "chrome",
         server: {
             //server files from the dist directory
-            baseDir: ['dist']
+            baseDir: ['app']
         }
     });
 
@@ -122,9 +146,13 @@ gulp.task('serve', ['build'], function(){
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(paths.styles, ['styles']);
-    gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
+    gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
+
+/**************************************************************************************************
+/******* BROWSERIFY
+/**************************************************************************************************/
 
 /*
 * Options Browserify
@@ -166,13 +194,14 @@ function bundle() {
 
 /**************************************************************************************************
 /******* MACROS TASK
-/**************************************************************************************************
+/**************************************************************************************************/
 
 /*
 * Macro task to re-build the dist directory
 */
 gulp.task('build', [
     'lint',
+    'templates',
     'scripts',
     'html',
     'images',
@@ -191,7 +220,7 @@ gulp.task('cleaning', [
 
 /**************************************************************************************************
 /******* BUILDS EXEC TASK
-/**************************************************************************************************
+/**************************************************************************************************/
 
 /*
 * Default task, builds everything
