@@ -201,8 +201,8 @@ function bundle() {
 */
 gulp.task('build', [
     'lint',
-    'templates',
     'scripts',
+    'templates',
     'html',
     'images',
     'styles'
