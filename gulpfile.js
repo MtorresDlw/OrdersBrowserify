@@ -208,6 +208,8 @@ gulp.task('build', [
     'lint',
     'scripts',
     'html',
+    'fonts',
+    'fontawesome',
     'images',
     'less'
 ]);
