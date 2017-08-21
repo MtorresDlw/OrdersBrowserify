@@ -25,7 +25,7 @@ const gulp          = require('gulp'),
 var paths = {
     app     : './app',
     dist    : './dist',
-    scripts : './app/scripts/**/*.js',
+    scripts : ['./app/scripts/*.js', './app/scripts/**/*.js', './node_modules/angular/angular.min.js'],
     styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
@@ -84,7 +84,7 @@ gulp.task('lint', function(){
 * Concatenates & uglifies JS Scripts into a single file
 */
 gulp.task('scripts', function(){
-    return gulp.src(paths.scripts)
+    return gulp.src(paths.scripts[0], paths.scripts[1], paths.scripts[2])
         .pipe(uglify())
         .pipe(concat('scripts.min.js'))
         .pipe(gulp.dest(paths.app + '/scripts'));
