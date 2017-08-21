@@ -99,7 +99,9 @@ gulp.task('html', function(){
 //return stylesheets
 gulp.task('less', function(){
     return gulp.src(paths.styles)
+        .pipe(sourcemaps.init())
         .pipe(less())
+        .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest(paths.app + '/css'))
         .pipe(browserSync.reload({
         stream: true
