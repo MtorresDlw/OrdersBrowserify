@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head lang="fr">
-        <meta charset="utf-8">
+    <head>
+        <!--META-->
+        <meta charset="utf-8" />
         <title>OrdersBrowserify</title>
-        <!--Fichiers CSS-->
-        <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <!--Fichiers de références CSS-->
+        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="css/main.css" type="text/css" rel="stylesheet"/>
+        <link href="css/app.css" type="text/css" rel="stylesheet"/>
+        <link href="css/font-awesome.css" type="text/css" rel="stylesheet"/>
     </head>
+
     <body>
-        <h1>Hello ! Gulp is watching you now !</h1>
-        <p>UNE IMAGE</p>
-        <p>Test BrowserSync de Gulp</p>
-        <p>
-            <img src="img/shlurp.png" alt="img shlurp" />
-        </p>
+        <!--Dynamic container-->
+        <div class="view-container">
+            <div ui-view></div>
+        </div>
 
         <!--Scripts-->
         <script src="bundle.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                if (window.location.hostname === 'localhost') {
+                    angular.bootstrap(document, ['ordersbrowserify']);
+                }
+            });
+        </script>
+        <script src="scripts/app.js"></script>
         <!--/Scripts-->
     </body>
 </html>

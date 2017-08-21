@@ -3,10 +3,11 @@ const gulp          = require('gulp'),
       connect       = require('gulp-connect'),
       less          = require('gulp-less'),
       del           = require('del'),
-      gutil          = require('gulp-util'),
+      gutil         = require('gulp-util'),
       jshint        = require('gulp-jshint'),
       concat        = require('gulp-concat'),
       watch         = require('gulp-watch'),
+      templateCache = require('gulp-angular-templatecache'),
 
       //BrowserSync
       browserSync   = require('browser-sync').create(),
@@ -22,12 +23,30 @@ const gulp          = require('gulp'),
 
 //mutualisation des chemins
 var paths = {
+    app     : './app',
     dist    : './dist',
     scripts : './app/scripts/**/*.js',
-    styles  : './app/css/**/*.less',
-    html    : './app/*.html',
-    images  : './app/img/*.*'
+    styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
+    html    : ['./app/*.html', './app/**/*.html'],
+    images  : './app/img/*.*',
+    fonts   : './node_modules/font-awesome/fonts/**'
 };
+
+/**************************************************************************************************
+/******* TASKS RUNNER - GULP TEMPLATES
+/**************************************************************************************************/
+
+gulp.task('templates', function(){
+    return gulp.src('./app/views/*.html', './app/views/partials/*.html')
+        .pipe(templateCache({
+            standalone: true
+    }))
+        .pipe(gulp.dest(paths.app + '/scripts'));
+});
+
+/**************************************************************************************************
+/******* TASKS RUNNER - CLEANS THE "DIST" DIRECTORY
+/**************************************************************************************************/
 
 /*
 * Cleans the dist directory
@@ -48,6 +67,10 @@ gulp.task('clean:html', function(cb){
     del(paths.dist + '/**/*.html', cb);
 });
 
+/**************************************************************************************************
+/******* TASKS RUNNER
+/**************************************************************************************************/
+
 /*
 * Checks the validity of JS Code
 */
@@ -64,20 +87,20 @@ gulp.task('scripts', function(){
     return gulp.src(paths.scripts)
         .pipe(uglify())
         .pipe(concat('scripts.min.js'))
-        .pipe(gulp.dest(paths.dist + '/js'));
+        .pipe(gulp.dest(paths.app + '/scripts'));
 });
 
 //return all html files into all app directories
 gulp.task('html', function(){
-    return gulp.src([paths.html])
-        .pipe(gulp.dest(paths.dist));
+    return gulp.src('./app/*.html', './app/**/*.html')
+        .pipe(connect.reload());
 });
 
 //return stylesheets
 gulp.task('styles', function(){
-    return gulp.src(paths.styles)
+    return gulp.src(paths.styles[0], paths.styles[1])
         .pipe(less())
-        .pipe(gulp.dest(paths.dist + '/css'));
+        .pipe(gulp.dest(paths.app + '/css'));
 });
 
 //return images files to dist directory
@@ -85,6 +108,22 @@ gulp.task('images', function(){
     return gulp.src(paths.images)
         .pipe(gulp.dest(paths.dist + '/img'));
 });
+
+//return fonts Awesome
+gulp.task('fonts', function(){
+    return gulp.src(paths.fonts)
+        .pipe(gulp.dest(paths.app + '/fonts'));
+});
+
+//return css fonts Awesome
+gulp.task('fontawesome', function(){
+    return gulp.src('./node_modules/font-awesome/css/font-awesome.css')
+        .pipe(gulp.dest(paths.app + '/css'));
+});
+
+/**************************************************************************************************
+/******* CONNEXION SERVER
+/**************************************************************************************************/
 
 /*
  * Synchronizes the browser with the 'dist' directory
@@ -97,7 +136,7 @@ gulp.task('serve', ['build'], function(){
         browser: "chrome",
         server: {
             //server files from the dist directory
-            baseDir: ['dist']
+            baseDir: ['app']
         }
     });
 
@@ -107,9 +146,13 @@ gulp.task('serve', ['build'], function(){
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(paths.styles, ['styles']);
-    gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
+    gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
+
+/**************************************************************************************************
+/******* BROWSERIFY
+/**************************************************************************************************/
 
 /*
 * Options Browserify
@@ -149,11 +192,16 @@ function bundle() {
         .pipe(browserSync.stream());
 }
 
+/**************************************************************************************************
+/******* MACROS TASK
+/**************************************************************************************************/
+
 /*
 * Macro task to re-build the dist directory
 */
 gulp.task('build', [
     'lint',
+    'templates',
     'scripts',
     'html',
     'images',
@@ -170,7 +218,12 @@ gulp.task('cleaning', [
     'clean:images'
 ]);
 
+/**************************************************************************************************
+/******* BUILDS EXEC TASK
+/**************************************************************************************************/
+
 /*
 * Default task, builds everything
 */
 gulp.task('default', ['cleaning', 'build']);
+
