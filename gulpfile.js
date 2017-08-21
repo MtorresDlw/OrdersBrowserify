@@ -114,6 +114,10 @@ gulp.task('images', function(){
         .pipe(gulp.dest(paths.dist + '/img'));
 });
 
+/**************************************************************************************************
+/******* TASK RUNNER BIBLIOTHEQUE FONT-AWESOME
+/**************************************************************************************************/
+
 //return fonts Awesome
 gulp.task('fonts', function(){
     return gulp.src(paths.fonts)
@@ -150,7 +154,7 @@ gulp.task('connect', ['build'], function(){
     * the dist directory in real time
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.styles, ['less']);
+    gulp.watch(paths.styles, ['less']).on("change", browserSync.reload);
     gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
