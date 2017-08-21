@@ -25,7 +25,7 @@ const gulp          = require('gulp'),
 var paths = {
     app     : './app',
     dist    : './dist',
-    scripts : ['./app/scripts/*.js', './app/scripts/**/*.js', './node_modules/angular/angular.min.js'],
+    scripts : ['./app/scripts/*.js', './app/scripts/**/*.js', './node_modules/angular/angular.js'],
     styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
@@ -182,7 +182,7 @@ var bundler = watchify(browserify(opts));
 
 bundler.on('update', bundle); //listener sur l'évènement 'update' pour maj le bundle
 bundler.on('log', gutil.log); //log les sorties du bundler sur le terminal
-gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assemble le bundle
+gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assembler le bundle
 
 function bundle() {
     return bundler.bundle()
@@ -196,7 +196,7 @@ function bundle() {
         //Ecrit les fichiers .map
         .pipe(sourcemaps.write('./'))
         //Copie le tout dans le répertoire final
-        .pipe(gulp.dest(paths.dist))
+        .pipe(gulp.dest(paths.app + '/scripts'))
         //Stream le résultat à BrowserSync pour qu'il recharge auto la page
         .pipe(browserSync.stream());
 }
