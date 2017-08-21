@@ -92,15 +92,18 @@ gulp.task('scripts', function(){
 
 //return all html files into all app directories
 gulp.task('html', function(){
-    return gulp.src('./app/*.html', './app/**/*.html')
+    return gulp.src(paths.html)
         .pipe(connect.reload());
 });
 
 //return stylesheets
-gulp.task('styles', function(){
-    return gulp.src(paths.styles[0], paths.styles[1])
+gulp.task('less', function(){
+    return gulp.src(paths.styles)
         .pipe(less())
-        .pipe(gulp.dest(paths.app + '/css'));
+        .pipe(gulp.dest(paths.app + '/css'))
+        .pipe(browserSync.reload({
+        stream: true
+        }));
 });
 
 //return images files to dist directory
@@ -128,7 +131,7 @@ gulp.task('fontawesome', function(){
 /*
  * Synchronizes the browser with the 'dist' directory
  */
-gulp.task('serve', ['build'], function(){
+gulp.task('connect', ['build'], function(){
     browserSync.init({
         name: 'localhost',
         notify: false,
@@ -145,7 +148,7 @@ gulp.task('serve', ['build'], function(){
     * the dist directory in real time
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.styles, ['styles']);
+    gulp.watch(paths.styles, ['less']);
     gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
@@ -202,10 +205,9 @@ function bundle() {
 gulp.task('build', [
     'lint',
     'scripts',
-    'templates',
     'html',
     'images',
-    'styles'
+    'less'
 ]);
 
 /*
