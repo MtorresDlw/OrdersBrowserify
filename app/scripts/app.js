@@ -9,7 +9,7 @@ require('angular-ui-bootstrap');
 require('./controllers');
 
 angular
-    .module('ordersbrowserify', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ordersbrowserify.controllers'])
+    .module('ordersApp', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ordersbrowserify.controllers'])
     .config(function($stateProvider){
 
         $stateProvider

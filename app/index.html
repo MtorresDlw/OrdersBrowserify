@@ -11,7 +11,7 @@
         <link href="css/font-awesome.css" type="text/css" rel="stylesheet"/>
     </head>
 
-    <body ng-app="ordersbrowserify">
+    <body>
         <!--Dynamic container-->
         <div class="view-container">
             <div ui-view></div>
@@ -21,9 +21,13 @@
         <script src="scripts/bundle.js"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
-                console.log("LE DOM EST PRET !");
+                if(window.location.hostname === "localhost") {
+                    angular.bootstrap(document, ['ordersApp']);
+                    console.log("Document chargé !");
+                }
             });
         </script>
+        <script src="scripts/app.js"></script>
         <!--/Scripts-->
     </body>
 </html>

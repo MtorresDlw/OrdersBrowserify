@@ -10,7 +10,7 @@ require('angular-ui-bootstrap');
 require('./controllers');
 
 angular
-    .module('ordersbrowserify', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ordersbrowserify.controllers'])
+    .module('ordersApp', ['ngAnimate', 'ngTouch', 'ui.bootstrap', 'ui.router', 'ordersbrowserify.controllers'])
     .config(function($stateProvider){
 
         $stateProvider
@@ -26,7 +26,7 @@ angular
 },{"./controllers":3,"angular":25,"angular-animate":5,"angular-touch":7,"angular-ui-bootstrap":9,"angular-ui-router":13}],2:[function(require,module,exports){
 'use strict';
 
-angular.module('ordersbrowserify')
+angular.module('ordersApp')
     .controller('authentificationCtrl', function($state){
         $state.go('home');
 });
@@ -10196,7 +10196,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
               if (tooltip) {
                 tooltip.remove();
-
+                
                 tooltip = null;
                 if (adjustmentTimeout) {
                   $timeout.cancel(adjustmentTimeout);
@@ -10204,7 +10204,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               }
 
               openedTooltips.remove(ttScope);
-
+              
               if (tooltipLinkedScope) {
                 tooltipLinkedScope.$destroy();
                 tooltipLinkedScope = null;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ordersbrowserify')
+angular.module('ordersApp')
     .controller('authentificationCtrl', function($state){
         $state.go('home');
 });
