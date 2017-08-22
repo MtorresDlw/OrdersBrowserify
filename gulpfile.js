@@ -105,7 +105,7 @@ gulp.task('images', function(){
 });
 
 gulp.task('angular', function(){
-    return gulp.src('./node_modules/angular/angular.js')
+    return gulp.src(['./node_modules/angular/angular.js', './node_modules/angular-ui-router/release/angular-ui-router.js'])
         .pipe(gulp.dest(paths.app + '/scripts'));
 });
 

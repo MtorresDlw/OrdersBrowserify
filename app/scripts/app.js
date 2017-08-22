@@ -1,12 +1,7 @@
 'use strict';
 
-require('angular-ui-router');
-
-var modules = ['ui.router', 'ui.bootstrap'];
-
 angular
-    .module('ordersbrowserify', modules)
-
+    .module('ordersbrowserify', ['ui.router'])
     .config(function($stateProvider){
 
         $stateProvider
@@ -14,7 +9,7 @@ angular
                 url: '/home',
                 templateUrl: 'views/login.html',
                 controller: 'authentificationCtrl'
-        });
+            });
 
         $state.go('home');
 });
