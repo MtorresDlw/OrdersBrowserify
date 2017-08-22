@@ -80,16 +80,6 @@ gulp.task('lint', function(){
         .pipe(jshint.reporter('default'));
 });
 
-/*
-* Concatenates & uglifies JS Scripts into a single file
-*/
-gulp.task('scripts', function(){
-    return gulp.src(paths.scripts[0], paths.scripts[1], paths.scripts[2])
-        .pipe(uglify())
-        .pipe(concat('scripts.min.js'))
-        .pipe(gulp.dest(paths.app + '/scripts'));
-});
-
 //return all html files into all app directories
 gulp.task('html', function(){
     return gulp.src(paths.html)
@@ -154,7 +144,7 @@ gulp.task('connect', ['build'], function(){
     * the dist directory in real time
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.styles, ['less']).on("change", browserSync.reload);
+    gulp.watch(paths.styles, ['less']);
     gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
