@@ -219,9 +219,8 @@ gulp.task('build', [
     'scripts',
     'html',
     'images',
-    'angular',
-    'bootstrap',
     'fonts',
+    'bootstrap',
     'fontawesome',
     'less'
 ]);
