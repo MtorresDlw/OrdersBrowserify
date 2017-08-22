@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.less"],"names":[],"mappings":"AAGA;EACC,sBAAA;EACA,YAAA","sourcesContent":["@bg-color: pink;\r\n@fg-color: white;\r\n\r\nbody{\r\n\tbackground-color: @bg-color;\r\n\tcolor: @fg-color;\r\n}\r\n"],"file":"main.css"}
+{"version":3,"sources":["main.less"],"names":[],"mappings":"AAGA;EACC,sBAAA;EACA,YAAA","sourcesContent":["@bg-color: pink;\n@fg-color: white;\r\n\r\nbody{\r\n\tbackground-color: @bg-color;\r\n\tcolor: @fg-color;\r\n}\r\n"],"file":"main.css"}

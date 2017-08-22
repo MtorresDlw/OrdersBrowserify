@@ -108,6 +108,16 @@ gulp.task('images', function(){
 /******* TASK RUNNER BIBLIOTHEQUE FONT-AWESOME
 /**************************************************************************************************/
 
+//return fichier css bootstrap
+gulp.task('bootstrap', function(){
+    return gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
+        .pipe(gulp.dest(paths.app + '/css'));
+})
+
+/**************************************************************************************************
+/******* TASK RUNNER BIBLIOTHEQUE FONT-AWESOME
+/**************************************************************************************************/
+
 //return fonts Awesome
 gulp.task('fonts', function(){
     return gulp.src(paths.fonts)
@@ -202,6 +212,7 @@ gulp.task('build', [
     'lint',
     'scripts',
     'html',
+    'bootstrap',
     'fonts',
     'fontawesome',
     'images',

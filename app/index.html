@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ordersbrowserify">
+<html>
     <head>
         <!--META-->
         <meta charset="utf-8" />
@@ -21,9 +21,7 @@
         <script src="scripts/bundle.js"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
-                if (window.location.hostname === 'localhost') {
-                    angular.bootstrap(document, ['ordersbrowserify']);
-                }
+                angular.bootstrap(document, ['ordersbrowserify']);
             });
         </script>
         <script src="scripts/app.js"></script>
