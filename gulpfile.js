@@ -25,7 +25,7 @@ const gulp          = require('gulp'),
 var paths = {
     app     : './app',
     dist    : './dist',
-    js      : ['./app/scripts/*.js', './app/scripts/**/*.js', ],
+    js      : ['./app/scripts/*.js', './app/scripts/**/*.js', '!./app/scripts/bundle.js'],
     styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
