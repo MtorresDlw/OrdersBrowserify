@@ -1,9 +1,6 @@
 'use strict';
 
-var modules = [
-    require('angular-ui-router'),
-    require('angular-ui-bootstrap')
-];
+var modules = ['ui.router', 'ui.bootstrap'];
 
 angular
     .module('ordersbrowserify', modules)
