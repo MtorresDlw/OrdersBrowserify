@@ -1,5 +1,7 @@
 'use strict';
 
+require('angular-ui-router');
+
 var modules = ['ui.router', 'ui.bootstrap'];
 
 angular

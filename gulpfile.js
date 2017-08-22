@@ -25,7 +25,7 @@ const gulp          = require('gulp'),
 var paths = {
     app     : './app',
     dist    : './dist',
-    scripts : ['./app/scripts/*.js', './app/scripts/**/*.js', './node_modules/angular/angular.js'],
+    scripts : ['./app/scripts/*.js', './app/scripts/**/*.js', ],
     styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
@@ -101,7 +101,12 @@ gulp.task('less', function(){
 //return images files to dist directory
 gulp.task('images', function(){
     return gulp.src(paths.images)
-        .pipe(gulp.dest(paths.dist + '/img'));
+        .pipe(gulp.dest(paths.app + '/img'));
+});
+
+gulp.task('angular', function(){
+    return gulp.src('./node_modules/angular/angular.js')
+        .pipe(gulp.dest(paths.app + '/scripts'));
 });
 
 /**************************************************************************************************
@@ -112,7 +117,7 @@ gulp.task('images', function(){
 gulp.task('bootstrap', function(){
     return gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
         .pipe(gulp.dest(paths.app + '/css'));
-})
+});
 
 /**************************************************************************************************
 /******* TASK RUNNER BIBLIOTHEQUE FONT-AWESOME
@@ -153,7 +158,7 @@ gulp.task('connect', ['build'], function(){
     * Watches any change in source code and updates
     * the dist directory in real time
     */
-    gulp.watch(paths.scripts, ['lint', 'scripts']);
+    gulp.watch(paths.scripts, ['lint'], ['./gulpfile.js']);
     gulp.watch(paths.styles, ['less']);
     gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
@@ -180,9 +185,9 @@ var opts = assign({}, watchify.args, customOpts);
 //Initialisation de Watchify
 var bundler = watchify(browserify(opts));
 
+gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assembler le bundle
 bundler.on('update', bundle); //listener sur l'évènement 'update' pour maj le bundle
 bundler.on('log', gutil.log); //log les sorties du bundler sur le terminal
-gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assembler le bundle
 
 function bundle() {
     return bundler.bundle()
@@ -209,6 +214,7 @@ function bundle() {
 * Macro task to re-build the dist directory
 */
 gulp.task('build', [
+    'angular',
     'lint',
     'scripts',
     'html',
