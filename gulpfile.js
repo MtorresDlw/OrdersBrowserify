@@ -25,7 +25,7 @@ const gulp          = require('gulp'),
 var paths = {
     app     : './app',
     dist    : './dist',
-    scripts : ['./app/scripts/*.js', './app/scripts/**/*.js', ],
+    js      : ['./app/scripts/*.js', './app/scripts/**/*.js', ],
     styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
@@ -75,7 +75,7 @@ gulp.task('clean:html', function(cb){
 * Checks the validity of JS Code
 */
 gulp.task('lint', function(){
-    return gulp.src(paths.scripts)
+    return gulp.src(paths.js)
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -158,9 +158,10 @@ gulp.task('connect', ['build'], function(){
     * Watches any change in source code and updates
     * the dist directory in real time
     */
-    gulp.watch(paths.scripts, ['lint'], ['./gulpfile.js']);
+    gulp.watch(paths.scripts, ['lint', 'scripts']);
+    gulp.watch(['./gulpfile.js']).on("change", browserSync.reload);
     gulp.watch(paths.styles, ['less']);
-    gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
+    gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
 
@@ -214,14 +215,14 @@ function bundle() {
 * Macro task to re-build the dist directory
 */
 gulp.task('build', [
-    'angular',
     'lint',
     'scripts',
     'html',
+    'images',
+    'angular',
     'bootstrap',
     'fonts',
     'fontawesome',
-    'images',
     'less'
 ]);
 

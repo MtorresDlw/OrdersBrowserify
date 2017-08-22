@@ -18,6 +18,9 @@
   "bugs": {
     "url": "https://github.com/MtorresDlw/OrdersBrowserify/issues"
   },
+  "browserify-shim": {
+    "angular": "angular"
+  },
   "homepage": "https://github.com/MtorresDlw/OrdersBrowserify#readme",
   "devDependencies": {
     "browser-sync": "^2.18.13",
