@@ -104,11 +104,6 @@ gulp.task('images', function(){
         .pipe(gulp.dest(paths.app + '/img'));
 });
 
-gulp.task('angular', function(){
-    return gulp.src(['./node_modules/angular/angular.js', './node_modules/angular-ui-router/release/angular-ui-router.js'])
-        .pipe(gulp.dest(paths.app + '/scripts'));
-});
-
 /**************************************************************************************************
 /******* TASK RUNNER BIBLIOTHEQUE FONT-AWESOME
 /**************************************************************************************************/
