@@ -1,4 +1,5 @@
 'use strict';
 
-angular.module('ordersbrowserify.controllers', [])
-    .controller('authentificationCtrl', require('./authentificationCtrl'));
+angular.module('ordersApp.controllers', [])
+    .controller('authentificationCtrl', require('./authentificationCtrl'))
+    .controller('contactCtrl', require('./contactCtrl'));

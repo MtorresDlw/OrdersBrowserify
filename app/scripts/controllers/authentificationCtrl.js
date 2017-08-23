@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('ordersApp')
-    .controller('authentificationCtrl', function($state){
-        $state.go('home');
-});
+module.exports = function($state) {
+    $state.go('home');
+    console.log("contrôleur authentificationCtrl chargé !");
+}
+
+

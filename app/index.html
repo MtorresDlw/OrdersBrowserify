@@ -3,6 +3,7 @@
     <head>
         <!--META-->
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>OrdersBrowserify</title>
         <!--Fichiers de références CSS-->
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
@@ -12,8 +13,29 @@
     </head>
 
     <body>
+        <!--Navbar-->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ui-sref="home">Logo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a ui-sref="home" ui-sref-active="active">HOME</a></li>
+                        <li><a ui-sref="services" ui-sref-active="active">SERVICES</a></li>
+                        <li><a ui-sref="portfolio" ui-sref-active="active">PORTFOLIO</a></li>
+                        <li><a ui-sref="pricing" ui-sref-active="active">PRICING</a></li>
+                        <li><a ui-sref="contact" ui-sref-active="active">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <!--Dynamic container-->
-        <h1>TITRE</h1>
         <div class="view-container">
             <div ui-view></div>
         </div>
