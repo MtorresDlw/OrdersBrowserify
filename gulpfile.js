@@ -25,7 +25,7 @@ const gulp          = require('gulp'),
 var paths = {
     app     : './app',
     dist    : './dist',
-    scripts : './app/scripts/**/*.js',
+    js      : ['./app/scripts/*.js', './app/scripts/**/*.js', '!./app/scripts/bundle.js'],
     styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
@@ -75,39 +75,48 @@ gulp.task('clean:html', function(cb){
 * Checks the validity of JS Code
 */
 gulp.task('lint', function(){
-    return gulp.src(paths.scripts)
+    return gulp.src(paths.js)
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
 
-/*
-* Concatenates & uglifies JS Scripts into a single file
-*/
-gulp.task('scripts', function(){
-    return gulp.src(paths.scripts)
-        .pipe(uglify())
-        .pipe(concat('scripts.min.js'))
-        .pipe(gulp.dest(paths.app + '/scripts'));
-});
-
 //return all html files into all app directories
 gulp.task('html', function(){
-    return gulp.src('./app/*.html', './app/**/*.html')
+    return gulp.src(paths.html)
         .pipe(connect.reload());
 });
 
 //return stylesheets
-gulp.task('styles', function(){
-    return gulp.src(paths.styles[0], paths.styles[1])
+gulp.task('less', function(){
+    return gulp.src(paths.styles)
+        .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(gulp.dest(paths.app + '/css'));
+        .pipe(sourcemaps.write('/'))
+        .pipe(gulp.dest(paths.app + '/css'))
+        .pipe(browserSync.reload({
+        stream: true
+        }));
 });
 
 //return images files to dist directory
 gulp.task('images', function(){
     return gulp.src(paths.images)
-        .pipe(gulp.dest(paths.dist + '/img'));
+        .pipe(gulp.dest(paths.app + '/img'));
 });
+
+/**************************************************************************************************
+/******* TASK RUNNER BIBLIOTHEQUE BOOTSTRAP
+/**************************************************************************************************/
+
+//return fichier css bootstrap
+gulp.task('bootstrap', function(){
+    return gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
+        .pipe(gulp.dest(paths.app + '/css'));
+});
+
+/**************************************************************************************************
+/******* TASK RUNNER BIBLIOTHEQUE FONT-AWESOME
+/**************************************************************************************************/
 
 //return fonts Awesome
 gulp.task('fonts', function(){
@@ -128,30 +137,33 @@ gulp.task('fontawesome', function(){
 /*
  * Synchronizes the browser with the 'dist' directory
  */
-gulp.task('serve', ['build'], function(){
-    browserSync.init({
-        name: 'localhost',
-        notify: false,
-        port: 8080,
-        browser: "chrome",
-        server: {
-            //server files from the dist directory
-            baseDir: ['app']
-        }
-    });
+gulp.task('connect', function(){
+    browserSync
+            .init({
+                name: 'localhost',
+                notify: false,
+                port: 8080,
+                browser: "chrome",
+                server: {
+                    //server files from the app directory with specific file
+                    baseDir: 'app',
+                    index: 'index.html'
+                },
+    })
 
     /*
     * Watches any change in source code and updates
     * the dist directory in real time
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.styles, ['styles']);
-    gulp.watch(paths.html, ['html'], ['templates']).on("change", browserSync.reload);
+    gulp.watch(['./gulpfile.js']).on("change", browserSync.reload);
+    gulp.watch(paths.styles, ['less']);
+    gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });
 
 /**************************************************************************************************
-/******* BROWSERIFY
+/******* BROWSERIFY + WATCHIFY => bundle.js
 /**************************************************************************************************/
 
 /*
@@ -171,9 +183,9 @@ var opts = assign({}, watchify.args, customOpts);
 //Initialisation de Watchify
 var bundler = watchify(browserify(opts));
 
+gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assembler le bundle
 bundler.on('update', bundle); //listener sur l'évènement 'update' pour maj le bundle
 bundler.on('log', gutil.log); //log les sorties du bundler sur le terminal
-gulp.task('scripts', bundle); //ajout de la tâche "gulp scripts" pour assemble le bundle
 
 function bundle() {
     return bundler.bundle()
@@ -187,7 +199,7 @@ function bundle() {
         //Ecrit les fichiers .map
         .pipe(sourcemaps.write('./'))
         //Copie le tout dans le répertoire final
-        .pipe(gulp.dest(paths.dist))
+        .pipe(gulp.dest(paths.app + '/scripts'))
         //Stream le résultat à BrowserSync pour qu'il recharge auto la page
         .pipe(browserSync.stream());
 }
@@ -202,10 +214,12 @@ function bundle() {
 gulp.task('build', [
     'lint',
     'scripts',
-    'templates',
     'html',
     'images',
-    'styles'
+    'fonts',
+    'bootstrap',
+    'fontawesome',
+    'less'
 ]);
 
 /*
@@ -225,5 +239,5 @@ gulp.task('cleaning', [
 /*
 * Default task, builds everything
 */
-gulp.task('default', ['cleaning', 'build']);
+gulp.task('default', ['build', 'connect']);
 
