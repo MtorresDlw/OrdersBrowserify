@@ -137,17 +137,19 @@ gulp.task('fontawesome', function(){
 /*
  * Synchronizes the browser with the 'dist' directory
  */
-gulp.task('connect', ['build'], function(){
-    browserSync.init({
-        name: 'localhost',
-        notify: false,
-        port: 8080,
-        browser: "chrome",
-        server: {
-            //server files from the dist directory
-            baseDir: ['app']
-        }
-    });
+gulp.task('connect', function(){
+    browserSync
+            .init({
+                name: 'localhost',
+                notify: false,
+                port: 8080,
+                browser: "chrome",
+                server: {
+                    //server files from the app directory with specific file
+                    baseDir: 'app',
+                    index: 'index.html'
+                },
+    })
 
     /*
     * Watches any change in source code and updates
@@ -237,5 +239,5 @@ gulp.task('cleaning', [
 /*
 * Default task, builds everything
 */
-gulp.task('default', ['cleaning', 'build']);
+gulp.task('default', ['build', 'connect']);
 

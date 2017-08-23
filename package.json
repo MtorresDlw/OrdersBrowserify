@@ -10,16 +10,10 @@
     "type": "git",
     "url": "git+https://miguel.torres@delawareconsulting.com:Gsinet_Dlw_Mt0@github.com/MtorresDlw/OrdersBrowserify.git"
   },
-  "keywords": [
-    "orders"
-  ],
   "author": "mtorres",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MtorresDlw/OrdersBrowserify/issues"
-  },
-  "browserify-shim": {
-    "angular": "angular"
   },
   "homepage": "https://github.com/MtorresDlw/OrdersBrowserify#readme",
   "devDependencies": {

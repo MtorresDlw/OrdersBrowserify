@@ -1,3 +1,7 @@
 'use strict';
 
-var ordersApp = angular.module('ordersApp', []);
+require('angular');
+require('angular-animate');
+
+angular
+    .module('ordersApp', ['ngAnimate']);
