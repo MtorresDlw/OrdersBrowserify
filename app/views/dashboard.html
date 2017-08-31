@@ -1,4 +1,35 @@
-<div class="jumbotron text-center">
-  <h1>Vue DASHBOARD</h1>
-  <p>Tableau de Bord du Site</p>
+<div class="background-photo">
+    <div class="centerSpinner" ng-show="syncing"><i class="fa fa-spinner fa-6 fa-spin"></i></div>
+
+    <div class="page dashboard-container" ng-hide="syncing">
+        <section>
+            <div class="jumbotron text-center">
+                <h1>Vue DASHBOARD</h1>
+                <p>Tableau de Bord du Site</p>
+            </div>
+        </section>
+
+        <section class="dashboard-button-box">
+            <!--Btn Orders-->
+            <div class="dashboard-button">
+                <a ng-click="viewOrders()" class="btn-dark">
+                    <span>Orders</span>
+                    <span class="dashboardInfo"><span class="fa fa-list-alt"></span></span>
+                </a>
+            </div>
+            <!--Btn Notifications-->
+            <div class="dashboard-button">
+                <a ng-click="viewNotifications()" class="btn-dark">
+                    <span>Notifications</span>
+                    <span class="dashboardInfo"><span class="fa fa-comment"></span></span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>My Footer</p>
+        </footer>
+
+    </div>
 </div>
+

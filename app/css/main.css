@@ -1,10 +1,25 @@
+/********************
+* BACKGROUND-COLOR
+********************/
+/********************
+* COLOR
+********************/
+html,
 body {
-  background-color: #f4511e;
-  color: black;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
 }
 .jumbotron {
   background-color: #fff;
-  color: #f4511e;
+  color: #333333;
+  margin-top: 50px;
   /* Orange */
 }
 .marketing {
@@ -12,9 +27,15 @@ body {
   text-align: center;
   padding: 20px;
 }
+.page {
+  height: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+}
 .navbar {
   margin-bottom: 0;
-  background-color: #f4511e;
+  background-color: #322777;
   z-index: 9999;
   border: 0;
   font-size: 12px !important;
@@ -28,12 +49,82 @@ body {
 }
 .navbar-nav li a:hover,
 .navbar-nav li.active a {
-  color: #f4511e !important;
+  color: #322777 !important;
   background-color: #fff !important;
 }
 .navbar-default .navbar-toggle {
   border-color: transparent;
   color: #fff !important;
+}
+/***DASHBOARD********
+********************/
+.background-photo {
+  background: url(../img/background-photo.jpg);
+  background-size: cover;
+  background-attachment: scroll;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.dashboard-container {
+  position: relative;
+  margin: 0;
+}
+.dashboard-button-box {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+.dashboard-button {
+  display: inline-block;
+  position: relative;
+  margin-left: 4%;
+  width: 22%;
+  min-width: 250px;
+  text-align: left;
+  background-color: #fff;
+  cursor: pointer;
+}
+.dashboard-container .btn-dark {
+  display: block;
+  height: 150px;
+  text-decoration: none;
+  padding: 15px;
+}
+.dashboardInfo {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+.dashboard-footer {
+  position: fixed;
+  left: 0;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+  line-height: 50px;
+  background: #322777;
+  /*#0163ad;*/
+  color: #ffffff;
+  font-size: 18px;
+}
+.centerSpinner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 3;
+}
+.fa-spinner {
+  font-size: 150px;
+}
+.page-dashboard {
+  height: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

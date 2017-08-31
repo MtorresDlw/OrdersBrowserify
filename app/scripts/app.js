@@ -27,6 +27,16 @@ angular
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html',
                 controller: 'dashboardCtrl'
+            })
+            .state('orderList', {
+                url: '/order',
+                templateUrl: 'views/orderList.html',
+                controller: 'orderListCtrl'
+            })
+            .state('notificationList', {
+                url: '/notification',
+                templateUrl: 'views/notificationList.html',
+                controller: 'notificationListCtrl'
             });
 
     })
