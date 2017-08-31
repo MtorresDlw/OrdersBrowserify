@@ -60,6 +60,7 @@ module.exports = function($state) {
     $state.go("dashboard");
     console.log("contrôleur dashboardCtrl chargé !");
 }
+
 },{}],5:[function(require,module,exports){
 'use strict';
 
