@@ -26,7 +26,7 @@ var paths = {
     app     : './app',
     dist    : './dist',
     js      : ['./app/scripts/*.js', './app/scripts/**/*.js', '!./app/scripts/bundle.js'],
-    styles  : ['./app/css/less/*.less', './app/css/less/**/*.less'],
+    styles  : './app/css/less/themes/main.less',//['./app/css/less/*.less', './app/css/less/**/*.less'],
     html    : ['./app/*.html', './app/**/*.html'],
     images  : './app/img/*.*',
     fonts   : './node_modules/font-awesome/fonts/**'

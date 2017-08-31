@@ -22,6 +22,11 @@ angular
                 url: '/contact',
                 templateUrl: 'views/contact.html',
                 controller: 'contactCtrl'
+            })
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'views/dashboard.html',
+                controller: 'dashboardCtrl'
             });
 
     })
