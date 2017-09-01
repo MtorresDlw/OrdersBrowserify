@@ -23,21 +23,22 @@ const gulp          = require('gulp'),
 
 //mutualisation des chemins
 var paths = {
-    app     : './app',
-    dist    : './dist',
-    js      : ['./app/scripts/*.js', './app/scripts/**/*.js', '!./app/scripts/bundle.js'],
-    styles  : './app/css/less/themes/main.less',//['./app/css/less/*.less', './app/css/less/**/*.less'],
-    html    : ['./app/*.html', './app/**/*.html'],
-    images  : './app/img/*.*',
-    fonts   : './node_modules/font-awesome/fonts/**'
+    app         : './app',
+    dist        : './dist',
+    js          : ['./app/scripts/*.js', './app/scripts/**/*.js', '!./app/scripts/bundle.js'],
+    styles      : './app/css/less/themes/main.less',//['./app/css/less/*.less', './app/css/less/**/*.less'],
+    html        : ['./app/*.html', './app/**/*.html'],
+    templates   : './app/views/templates/*.html',
+    images      : './app/img/*.*',
+    fonts       : './node_modules/font-awesome/fonts/**'
 };
 
 /**************************************************************************************************
-/******* TASKS RUNNER - GULP TEMPLATES
+/******* TASKS RUNNER - GULP TEMPLATES - Result : app/scripts/template.js
 /**************************************************************************************************/
 
 gulp.task('templates', function(){
-    return gulp.src('./app/views/*.html', './app/views/partials/*.html')
+    return gulp.src(paths.templates)
         .pipe(templateCache({
             standalone: true
     }))
@@ -157,6 +158,7 @@ gulp.task('connect', function(){
     */
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(['./gulpfile.js']).on("change", browserSync.reload);
+    gulp.watch(paths.templates, ['templates']).on("change", browserSync.reload);
     gulp.watch(paths.styles, ['less']);
     gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
@@ -213,6 +215,7 @@ function bundle() {
 */
 gulp.task('build', [
     'lint',
+    'templates',
     'scripts',
     'html',
     'images',

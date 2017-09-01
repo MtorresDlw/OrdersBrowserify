@@ -1,9 +1,17 @@
+/***CHARTE**********
+********************/
 /********************
 * BACKGROUND-COLOR
 ********************/
 /********************
 * COLOR
 ********************/
+/********************
+* CLASS COLOR
+********************/
+.orange {
+  color: #FFA500 !important;
+}
 html,
 body {
   overflow: hidden;
@@ -32,6 +40,12 @@ body {
   overflow: hidden;
   touch-action: pan-y;
   -ms-touch-action: pan-y;
+}
+.right {
+  float: right !important;
+}
+.left {
+  float: left !important;
 }
 .navbar {
   margin-bottom: 0;
@@ -108,6 +122,7 @@ body {
   /*#0163ad;*/
   color: #ffffff;
   font-size: 18px;
+  padding: 0 50px;
 }
 .centerSpinner {
   width: 100px;

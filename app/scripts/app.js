@@ -5,6 +5,7 @@ require('angular-animate');
 require('angular-touch');
 require('angular-ui-bootstrap');
 require('angular-ui-router');
+//require("angular-translate");
 
 require('./controllers');
 
@@ -38,6 +39,11 @@ angular
                 templateUrl: 'views/notificationList.html',
                 controller: 'notificationListCtrl'
             });
+
+        //Languages Traduction :
+        //$translateProvider.translations('en', require('../locales/en'));
+        //$translateProvider.translations('fr', require('../locales/fr'));
+        //$translateProvider.preferredLanguage('en');
 
     })
     .run(function($state) {
