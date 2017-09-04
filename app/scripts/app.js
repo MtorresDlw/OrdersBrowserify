@@ -8,9 +8,10 @@ require('angular-ui-router');
 //require("angular-translate");
 
 require('./controllers');
+require('./directives');
 
 angular
-    .module('ordersApp', ['ngAnimate', 'ngTouch', 'ui.bootstrap','ui.router', 'ordersApp.controllers'])
+    .module('ordersApp', ['ngAnimate', 'ngTouch', 'ui.bootstrap','ui.router', 'ordersApp.controllers', 'ordersApp.directives'])
     .config(function($stateProvider) {
 
         $stateProvider
@@ -47,5 +48,5 @@ angular
 
     })
     .run(function($state) {
-        $state.go('home');
+        $state.go('dashboard');
 });

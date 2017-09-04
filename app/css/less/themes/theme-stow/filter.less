@@ -1,0 +1,144 @@
+/***FILTER   ********
+********************/
+.filter {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  min-height: 60px;
+  background-color: #f3f3f3;
+  color: #0c3182;
+  border-bottom: 1px solid #ffffff;
+}
+.filter .filter-sort {
+  padding: 0 15px;
+  z-index: 5;
+  float: left;
+  font-size: 18px;
+}
+.filter .filter-sort .filter-criteria {
+  margin: 0 2px;
+  padding: 9px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.filter .filter-sort .filter-criteria-selected {
+  background-color: #1d539a;
+  color: #ffffff;
+}
+.filter-content {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter .search-wrapper {
+  margin: 10px 15px;
+  width: 260px;
+  float: right;
+}
+.filter .fa-icon {
+  right: 10px;
+  top: 12px;
+}
+.filter input[type="text"] {
+  padding: 10px 25px 10px 10px;
+  height: 39px;
+}
+
+/*
+* SEARCH
+*/
+.search-wrapper {
+  position: relative;
+}
+
+.searchBox {
+  background: #fff;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+.search-wrapper .fa-icon {
+  position: absolute;
+  font-size: 16px;
+  color: #8e8e93;
+}
+
+.search-wrapper input[type="text"] {
+  box-sizing: border-box;
+  border: 1px solid #c9c9ce;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.search-wrapper input[type="text"]:focus {
+  border: 1px solid #c9c9ce;
+  box-shadow: none;
+  outline: none;
+  color: #484848;
+}
+
+.searchBox .fa-icon {
+  right: 8px;
+  top: 7px;
+}
+
+.searchBox .search-wrapper input[type="text"] {
+  padding: 5px 25px 4px 10px;
+}
+
+.searchMaterial {
+  padding: 0;
+  margin: 15px 0;
+}
+
+.searchMaterial .search-wrapper {
+  width: 480px;
+}
+
+.searchMaterial .button {
+  margin: -5px 0;
+}
+
+/*
+* priorityFilter
+*/
+
+.navFa {
+  color: #999999;
+}
+.veryHigh .navFa {
+  color: #be3223;
+}
+.veryHigh .statusBar {
+  background: #be3223;
+}
+.high .navFa {
+  color: #e67d20;
+}
+.high .statusBar {
+  background: #e67d20;
+}
+.medium .navFa {
+  color: #f1c40e;
+}
+.medium .statusBar {
+  background: #f1c40e;
+}
+.low .navFa {
+  color: #50cb61;
+}
+.low .statusBar {
+  background: #50cb61;
+}
+.tabh4 {
+  background: #0c3182;
+  /*font-size: 20px;
+    line-height: 45px;*/
+}
+

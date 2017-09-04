@@ -1,4 +1,38 @@
-<div class="jumbotron text-center">
-  <h1>Vue Liste des Ordres</h1>
-  <p>We specialize in blablabla</p>
+<div class="page order-container">
+    <!--Bandeau de Navigation-->
+    <header>
+        <div class="header-container">
+            <span ng-click="goToDashboard()">
+                <a class="backBtn"><span class="fa fa-angle-left"></span></a>
+                Orders
+            </span>
+        </div>
+    </header>
+
+    <!--Corps de la Page-->
+    <div class="page-view">
+        <!--Priority Filter-->
+        <aside class="page-nav">
+            <priority-filter></priority-filter>
+        </aside>
+    </div>
+    <section class="page-content narrow">
+        <!--Filter-->
+        <div class="filter">
+            <!--Filter By-->
+            <div class="filter-sort">
+                Trier Par :
+                <a class="filter-criteria">Client</a>
+                <a class="filter-criteria">Date</a>
+            </div>
+            <!--Search Box-->
+            <div class="search-wrapper">
+                <input class="form-control input-lg" type="text" placeholder="Recherche..." ng-model="query"/>
+            </div>
+        </div>
+
+        <!--List Order-->
+        <div class="page-list order">
+        </div>
+    </section>
 </div>

@@ -26,7 +26,8 @@ var paths = {
     app         : './app',
     dist        : './dist',
     js          : ['./app/scripts/*.js', './app/scripts/**/*.js', '!./app/scripts/bundle.js'],
-    styles      : './app/css/less/themes/main.less',//['./app/css/less/*.less', './app/css/less/**/*.less'],
+    less        : './app/css/less/themes/main.less',
+    styles      : ['./app/css/less/*.less', './app/css/less/**/*.less'],
     html        : ['./app/*.html', './app/**/*.html'],
     templates   : './app/views/templates/*.html',
     images      : './app/img/*.*',
@@ -89,7 +90,7 @@ gulp.task('html', function(){
 
 //return stylesheets
 gulp.task('less', function(){
-    return gulp.src(paths.styles)
+    return gulp.src(paths.less)
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(sourcemaps.write('/'))
@@ -159,7 +160,7 @@ gulp.task('connect', function(){
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(['./gulpfile.js']).on("change", browserSync.reload);
     gulp.watch(paths.templates, ['templates']).on("change", browserSync.reload);
-    gulp.watch(paths.styles, ['less']);
+    gulp.watch(paths.less, ['less']);
     gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });

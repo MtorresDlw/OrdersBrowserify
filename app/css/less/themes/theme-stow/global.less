@@ -1,6 +1,6 @@
 html, body{
     overflow: hidden;
-    background-color: @bg-white-color;
+    background-color: #fff;
 }
 
 html{
@@ -24,6 +24,10 @@ body{
   padding: 20px;
 }
 
+/*
+* PAGE
+*/
+
 .page{
     height: 100%;
     overflow: hidden;
@@ -31,10 +35,205 @@ body{
     -ms-touch-action: pan-y;
 }
 
+.page-view {
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.page-nav {
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  background: #f3f3f3;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.page-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.page-content.narrow {
+  margin-left: 25%;
+  height: 100%;
+  width: 75%;
+}
+
+.page-nav ul {
+  margin-right: 1px;
+}
+
+.page-nav li {
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+
+.page-nav li a {
+  display: block;
+  height: 60px;
+  color: #484848;
+  line-height: 60px;
+  font-size: 22px;
+}
+
+.page-nav li a.selected,
+.page-nav li a:hover {
+  background: #cee6f7;
+}
+
+.page-nav li .navFa {
+  position: relative;
+  display: block;
+  float: left;
+  width: 50px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.page-list {
+    background: #f3f3f3;
+    padding: 61px 0px 0px 0px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.page-list-loader {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.page-list-loader .fa-spinner {
+    font-size: 40px;
+}
+
+.notify.page-list {
+    padding-bottom: 62px;
+}
+
+.page-list ul {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.page-list li {
+    border-bottom: 1px solid #f3f3f3;
+    background: #fefefe;
+}
+
+.page-list li:hover {
+    background: #cee6f7;
+}
+
+.page-list li .statusBar {
+    display: block;
+    float: left;
+    width: 5px;
+    height: 60px;
+}
+
+.page-list li .fa {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.page-list li a {
+    text-decoration: none;
+}
+
+.page-list li a:hover {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    line-height: 25px;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #224459;
+    line-height: 50px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #322777;
+    line-height: 30px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+h4 {
+    line-height: 30px;
+    background: #f3f3f3;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+    cursor: pointer;
+}
+
+h4 .fa {
+    display: inline-block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+}
+
 .right {
-  float: right !important;
+    float: right !important;
 }
 
 .left {
-  float: left !important;
+    float: left !important;
+}
+
+.reset {
+    clear: both;
+    height: 0;
+    margin-top: -5px;
+}
+
+.hidden {
+    display: none
+}
+
+[ng-cloak] {
+    display: none;
+}
+
+[ng-cloak].splash {
+    background-color: @color-background-splash;
+    display: block !important;
 }
