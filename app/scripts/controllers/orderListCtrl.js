@@ -6,6 +6,10 @@ module.exports = function($scope, $state) {
         $state.go('dashboard');
     };
 
+    //Initialisation des variables :
+    $scope.dateCheck = true;
+    $scope.descriptionCheck = false;
+
     //Getting All Orders from Mocks
     $scope.orders = [
         {
@@ -37,7 +41,7 @@ module.exports = function($scope, $state) {
             EquipmentNr: "",
             CustomerNr: "",
             ContactPersonNr: "",
-            StartDate: "20171002",
+            StartDate: "20171030",
             StartTime: "PT11H00M00S",
             FinishDate: "20171002",
             FinishTime: "PT13H00M00S",
@@ -45,6 +49,18 @@ module.exports = function($scope, $state) {
             WorkCenter: "FM-01-02"
         }
     ];
+
+    //Sort on Customer :
+    $scope.customerToggle = function customerToggle() {
+        $scope.descriptionCheck = true;
+        $scope.dateCheck = false;
+    }
+
+    //Sort on Date :
+    $scope.dateToggle = function dateToggle() {
+        $scope.dateCheck = true;
+        $scope.descriptionCheck = false;
+    }
 
     //Affichage console :
     console.log("contrôleur orderListCtrl chargé !");
