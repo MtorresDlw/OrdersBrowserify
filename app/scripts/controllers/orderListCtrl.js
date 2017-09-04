@@ -50,6 +50,11 @@ module.exports = function($scope, $state) {
         }
     ];
 
+    //View the details of an Order :
+    $scope.viewDetailsOrder = function viewDetailsOrder(order){
+        $state.go('orderDetail');
+    }
+
     //Sort on Customer :
     $scope.customerToggle = function customerToggle() {
         $scope.descriptionCheck = true;

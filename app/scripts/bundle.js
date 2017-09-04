@@ -36,6 +36,11 @@ angular
                 templateUrl: 'views/orderList.html',
                 controller: 'orderListCtrl'
             })
+            .state('orderDetail', {
+                url: '/order',
+                templateUrl: 'views/orderDetail.html',
+                controller: 'orderDetailCtrl'
+            })
             .state('notificationList', {
                 url: '/notification',
                 templateUrl: 'views/notificationList.html',
@@ -194,6 +199,11 @@ module.exports = function($scope, $state) {
             WorkCenter: "FM-01-02"
         }
     ];
+
+    //View the details of an Order :
+    $scope.viewDetailsOrder = function viewDetailsOrder(order){
+        $state.go('orderDetail');
+    }
 
     //Sort on Customer :
     $scope.customerToggle = function customerToggle() {

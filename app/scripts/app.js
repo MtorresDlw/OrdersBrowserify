@@ -35,6 +35,11 @@ angular
                 templateUrl: 'views/orderList.html',
                 controller: 'orderListCtrl'
             })
+            .state('orderDetail', {
+                url: '/order',
+                templateUrl: 'views/orderDetail.html',
+                controller: 'orderDetailCtrl'
+            })
             .state('notificationList', {
                 url: '/notification',
                 templateUrl: 'views/notificationList.html',
