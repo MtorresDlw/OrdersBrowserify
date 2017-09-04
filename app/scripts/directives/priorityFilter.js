@@ -16,7 +16,15 @@ module.exports = function() {
                     selectedElements[i].className = '';
                 }
 
-            }
+                //Initialisation de la variable
+                var elementToSelect;
+                if($event.target.className === 'navFa fa fa-exclamation-triangle' || $event.target.className === 'navFa fa fa-list') {
+                    elementToSelect = $event.target.parentNode;
+                }else{
+                    elementToSelect = $event.target;
+                }
+                elementToSelect.className = 'selected';
+            };
         }
 
     };

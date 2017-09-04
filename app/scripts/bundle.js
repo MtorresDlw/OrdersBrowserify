@@ -151,15 +151,56 @@ module.exports = function($scope, $state) {
         $state.go('dashboard');
     };
 
+    //Getting All Orders from Mocks
+    $scope.orders = [
+        {
+            Id: "0001",
+            Name: "Order One",
+            OrderNr: "4000024",
+            Status: "REL  MANC NMAT PRC  SETC",
+            PriorityNr: "1",
+            Description: "",
+            LocationNr: "M01-0G-01-01-SLDO",
+            EquipmentNr: "",
+            CustomerNr: "",
+            ContactPersonNr: "",
+            StartDate: "20151002",
+            StartTime: "PT11H00M00S",
+            FinishDate: "20151002",
+            FinishTime: "PT13H00M00S",
+            LongText: "",
+            WorkCenter: "FM-01-02"
+        },
+        {
+            Id: "0002",
+            Name: "Order Two",
+            OrderNr: "4000025",
+            Status: "REL  MANC NMAT PR SETC",
+            PriorityNr: "2",
+            Description: "",
+            LocationNr: "M01-0G-01-01-SLDO",
+            EquipmentNr: "",
+            CustomerNr: "",
+            ContactPersonNr: "",
+            StartDate: "20171002",
+            StartTime: "PT11H00M00S",
+            FinishDate: "20171002",
+            FinishTime: "PT13H00M00S",
+            LongText: "",
+            WorkCenter: "FM-01-02"
+        }
+    ];
+
     //Affichage console :
     console.log("contrôleur orderListCtrl chargé !");
-}
+};
 
 },{}],9:[function(require,module,exports){
 'use strict';
 
 angular.module('ordersApp.directives', [])
     .directive('priorityFilter', require('./priorityFilter'));
+
 },{"./priorityFilter":10}],10:[function(require,module,exports){
 'use strict';
 
@@ -179,11 +220,20 @@ module.exports = function() {
                     selectedElements[i].className = '';
                 }
 
-            }
+                //Initialisation de la variable
+                var elementToSelect;
+                if($event.target.className === 'navFa fa fa-exclamation-triangle' || $event.target.className === 'navFa fa fa-list') {
+                    elementToSelect = $event.target.parentNode;
+                }else{
+                    elementToSelect = $event.target;
+                }
+                elementToSelect.className = 'selected';
+            };
         }
 
     };
 };
+
 },{}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.6

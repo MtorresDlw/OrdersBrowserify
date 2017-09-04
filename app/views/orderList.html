@@ -33,6 +33,30 @@
 
         <!--List Order-->
         <div class="page-list order">
+            <!--<div class="page-list-loader"><span class="fa fa-spinner fa-spin"></span></div> "affiche icône de chargement"-->
+            <ul>
+                <li ng-repeat="order in orders | filter:query | filter:priorityFilter | orderBy:sortBy track by order.Id"
+                    ng-class="{
+                                low:        order.PriorityNr === '4',
+                                medium :    order.PriorityNr === '3',
+                                high:       order.PriorityNr === '2',
+                                veryHigh:   order.PriorityNr === '1'
+                              }">
+                    <span class="statusBar"></span>
+                    <span class="navFa fa fa-exclamation-triangle"></span>
+
+                    <div class="listInfo">
+                        <div class="leftSide">
+                            <span class="">{{order.Id}}</span>
+                            <span class="listCustomer">{{order.Name}}</span>
+                        </div>
+                        <div class="rightSide">
+                            <span class="listDate">{{order.StartDate}}</span>
+                            <span class="listOrder">{{order.OrderNr}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </section>
 </div>

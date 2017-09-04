@@ -1,7 +1,9 @@
 <div class="background-photo">
-    <div class="centerSpinner" ng-show="syncing"><i class="fa fa-spinner fa-6 fa-spin"></i></div>
+    <!--<div class="centerSpinner" ng-show="syncing"><i class="fa fa-spinner fa-6 fa-spin"></i></div>-->
 
-    <div class="page dashboard-container" ng-hide="syncing">
+    <!--container de la page Dashboard-->
+    <div class="page dashboard-container">
+        <!--Jumbotron Bootstrap-->
         <section>
             <div class="jumbotron text-center">
                 <h1>Vue DASHBOARD</h1>
@@ -9,29 +11,33 @@
             </div>
         </section>
 
+        <!--Buttons Menu Dashboard-->
         <section class="dashboard-button-box">
             <!--Btn Orders-->
             <div class="dashboard-button">
                 <a ng-click="viewOrders()" class="btn-dark">
-                    <span>Orders</span>
+                    <span class="dashboardTlt">Orders</span>
                     <span class="dashboardInfo"><span class="fa fa-list-alt"></span></span>
                 </a>
             </div>
             <!--Btn Notifications-->
             <div class="dashboard-button">
                 <a ng-click="viewNotifications()" class="btn-dark">
-                    <span>Notifications</span>
+                    <span class="dashboardTlt">Notifications</span>
                     <span class="dashboardInfo"><span class="fa fa-comment"></span></span>
                 </a>
             </div>
+            <div class="reset"></div>
         </section>
 
+        <!--Footer Page Dashboard-->
         <footer class="dashboard-footer">
             <div class="right">
                 <a ng-click="open()"><span class="fa fa-cog orange"></span></a>
             </div>
         </footer>
 
+        <!--Script for Add Template priorityFilter in the view-->
         <script type="text/ng-template" id="myModalContent.html">
             <div class="modal-content">
                 <div class="modal-header">
