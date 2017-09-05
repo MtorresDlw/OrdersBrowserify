@@ -1,6 +1,57 @@
-{
-    "id": "test",
-    "name": "orderName",
-    "storage": "none",
-    "description": "my order description."
-}
+[
+    {
+        "Id": "0001",
+        "Name": "Order One",
+        "OrderNr": "4000024",
+        "Status": "REL  MANC NMAT PRC  SETC",
+        "PriorityNr": "1",
+        "Description": "",
+        "LocationNr": "M01-0G-01-01-SLDO",
+        "EquipmentNr": "",
+        "CustomerNr": "00650",
+        "ContactPersonNr": "",
+        "StartDate": "20151002",
+        "StartTime": "PT11H00M00S",
+        "FinishDate": "20151002",
+        "FinishTime": "PT13H00M00S",
+        "LongText": "",
+        "WorkCenter": "FM-01-02"
+    },
+    {
+        "Id": "0002",
+        "Name": "Order Two",
+        "OrderNr": "4000021",
+        "Status": "REL  MANC NMAT PROD SETC",
+        "PriorityNr": "3",
+        "Description": "",
+        "LocationNr": "M01-0G-01-01-SLDO",
+        "EquipmentNr": "",
+        "CustomerNr": "00210",
+        "ContactPersonNr": "",
+        "StartDate": "20151501",
+        "StartTime": "PT11H00M00S",
+        "FinishDate": "20151002",
+        "FinishTime": "PT13H00M00S",
+        "LongText": "",
+        "WorkCenter": "FM-01-02"
+    },
+    {
+        "Id": "0003",
+        "Name": "Order Three",
+        "OrderNr": "4000023",
+        "Status": "REL  MANC NMAT PROD SETC",
+        "PriorityNr": "4",
+        "Description": "",
+        "LocationNr": "M01-0G-01-01-SLDO",
+        "EquipmentNr": "",
+        "CustomerNr": "00315",
+        "ContactPersonNr": "",
+        "StartDate": "20162404",
+        "StartTime": "PT11H00M00S",
+        "FinishDate": "20151002",
+        "FinishTime": "PT13H00M00S",
+        "LongText": "",
+        "WorkCenter": "FM-01-02"
+    }
+]
+

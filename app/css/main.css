@@ -326,6 +326,7 @@ header .header-container {
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs.nav-justified > .active > a:focus {
   color: #FFA500;
+  background-color: #322777;
 }
 .page-view {
   position: fixed;

@@ -36,7 +36,7 @@ angular
                 controller: 'orderListCtrl'
             })
             .state('orderDetail', {
-                url: '/order',
+                url: '/orderDetail',
                 templateUrl: 'views/orderDetail.html',
                 controller: 'orderDetailCtrl'
             })

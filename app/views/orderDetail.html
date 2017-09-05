@@ -1,4 +1,57 @@
-<div class="jumbotron text-center">
-  <h1>Vue Détail de l'Ordre sélectionné</h1>
-  <p>We specialize in blablabla</p>
+<div class="page order-container">
+    <!--Header Nav-->
+    <header>
+        <div class="header-container">
+            <span ng-click="goToOrderList()">
+                <a class="backBtn"><span class="fa fa-angle-left"></span></a>
+                Order
+            </span>
+        </div>
+    </header>
+
+    <!--Body OrderDetail-->
+    <div class="page-view">
+        <section class="page-content">
+            <div class="page-whole">
+
+                <div class="page-overview withButtonBox">
+                    <div class="page-info">
+                        <div class="infoItem">
+                            <div class="infoDetailTabs">
+                                <!--ui.bootstrap.tabs-->
+                                <uib-tabset justified="true" active="2" type="tabs">
+                                    <!--Onglet Header Data-->
+                                    <uib-tab index="0" heading="Header Data" class="tab_heading">My Content to Header Data</uib-tab>
+                                    <!--Onglet Operations-->
+                                    <uib-tab index="1" heading="Operations" class="tab_heading">My Operations</uib-tab>
+                                    <!--Onglet Attachments-->
+                                    <uib-tab index="2" heading="Attachments" class="tab_heading">My Attachments</uib-tab>
+                                    <!--Onglet Components & Markings-->
+                                    <uib-tab index="3" heading="Components & Markings" class="tab_heading">My Components</uib-tab>
+                                    <!--Onglet Tasks Order-->
+                                    <uib-tab index="4" heading="Tasks Order" class="tab_heading">My Tasks Order</uib-tab>
+                                    <!--Onglet Risk Analysis-->
+                                    <uib-tab index="5" heading="Risk Analysis" class="tab_heading">My Content to Risk Analysis</uib-tab>
+                                </uib-tabset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer OrderDetail-->
+                <div class="buttonBox">
+                    <a class="button btn-dark" ng-click="goToOrderInfo()">
+                        <span class="fa fa-info orange"></span>
+                        Information
+                    </a>
+                    <a class="button btn-dark" ng-click="goToServiceReport()">
+                        <span class="fa fa-eye orange"></span>
+                        Rapport de Service
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
 </div>

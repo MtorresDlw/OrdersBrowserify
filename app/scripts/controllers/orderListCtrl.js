@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($scope, $state) {
+module.exports = function($scope, $state, $http) {
     //Go Back To Dashboard View :
     $scope.goToDashboard = function goToDashboard(){
         $state.go('dashboard');
@@ -10,8 +10,25 @@ module.exports = function($scope, $state) {
     $scope.dateCheck = true;
     $scope.descriptionCheck = false;
 
-    //Getting All Orders from Mocks
-    $scope.orders = [
+    //Getting All Order from Mocks
+    $http.get('mocks/orders.json')
+        .then(function success(response){
+            $scope.orders = response.data;
+    });
+
+    /*$http({
+        method: 'GET',
+        url: 'mocks/orders/orders.json'
+    }).then(function success(response) {
+        self.orders = response.data;
+    }, function errorCallback(response){
+        self.orders = response.statusText;
+    });*/
+
+
+
+    //Getting All Orders from Json
+    /*$scope.orders = [
         {
             Id: "0001",
             Name: "Order One",
@@ -48,7 +65,7 @@ module.exports = function($scope, $state) {
             LongText: "",
             WorkCenter: "FM-01-02"
         }
-    ];
+    ];*/
 
     //View the details of an Order :
     $scope.viewDetailsOrder = function viewDetailsOrder(order){

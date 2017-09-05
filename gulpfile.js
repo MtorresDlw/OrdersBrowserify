@@ -160,7 +160,7 @@ gulp.task('connect', function(){
     gulp.watch(paths.scripts, ['lint', 'scripts']);
     gulp.watch(['./gulpfile.js']).on("change", browserSync.reload);
     gulp.watch(paths.templates, ['templates']).on("change", browserSync.reload);
-    gulp.watch(paths.less, ['less']);
+    gulp.watch(paths.styles, ['less']); //on surveille le changement sur tous les fichiers less
     gulp.watch(paths.html, ['html']).on("change", browserSync.reload);
     gulp.watch(paths.images, ['images']).on("change", browserSync.reload);
 });

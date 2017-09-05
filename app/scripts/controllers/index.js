@@ -8,4 +8,5 @@ angular.module('ordersApp.controllers', [])
 
     .controller('notificationListCtrl', require('./notificationListCtrl'))
 
-    .controller('orderListCtrl', require('./orderListCtrl'));
+    .controller('orderListCtrl', require('./orderListCtrl'))
+    .controller('orderDetailCtrl', require('./orderDetailCtrl'));
