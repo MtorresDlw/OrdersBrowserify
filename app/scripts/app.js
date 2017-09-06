@@ -37,6 +37,7 @@ angular
             })
             .state('orderDetail', {
                 url: '/orderDetail',
+                params: { order: null },
                 templateUrl: 'views/orderDetail.html',
                 controller: 'orderDetailCtrl'
             })

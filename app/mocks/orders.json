@@ -1,6 +1,6 @@
 [
     {
-        "Id": "0001",
+        "OrderId": "0001",
         "Name": "Order One",
         "OrderNr": "4000024",
         "Status": "REL  MANC NMAT PRC  SETC",
@@ -18,7 +18,7 @@
         "WorkCenter": "FM-01-02"
     },
     {
-        "Id": "0002",
+        "OrderId": "0002",
         "Name": "Order Two",
         "OrderNr": "4000021",
         "Status": "REL  MANC NMAT PROD SETC",
@@ -36,7 +36,7 @@
         "WorkCenter": "FM-01-02"
     },
     {
-        "Id": "0003",
+        "OrderId": "0003",
         "Name": "Order Three",
         "OrderNr": "4000023",
         "Status": "REL  MANC NMAT PROD SETC",

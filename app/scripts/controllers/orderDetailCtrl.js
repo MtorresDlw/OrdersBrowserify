@@ -1,6 +1,9 @@
 'use strict';
 
-module.exports = function($scope, $state) {
+module.exports = function($scope, $state, $stateParams) {
+
+    $scope.order = $stateParams.order;
+    console.log($scope.order);
 
     /*
     * MENU NAVIGATION

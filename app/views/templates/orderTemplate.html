@@ -1,30 +1,4 @@
 <!--Template Liste des Ordres de Service-->
-<!--<ul>
-    <li ng-repeat="order in $ctrl.orders | filter:$ctrl.query | filter:$ctrl.priorityFilter | orderBy:$ctrl.orderProp"
-                    ng-class="{
-                                low:        order.PriorityNr === '4',
-                                medium :    order.PriorityNr === '3',
-                                high:       order.PriorityNr === '2',
-                                veryHigh:   order.PriorityNr === '1'
-                              }">
-        <a ng-click="viewDetailsOrder()">
-            <span class="statusBar"></span>
-            <span class="navFa fa fa-exclamation-triangle"></span>
-
-            <div class="listInfo">
-                <div class="leftSide">
-                    <span class="">{{order.Id}}</span>
-                    <span class="listCustomer">{{order.Name}}</span>
-                </div>
-                <div class="rightSide">
-                    <span class="listDate">{{order.StartDate}}</span>
-                    <span class="listOrder">{{order.OrderNr}}</span>
-                </div>
-            </div>
-        </a>
-    </li>
-</ul>-->
-
 <ul>
     <li ng-repeat="order in orders | filter:query | filter:priorityFilter"
                     ng-class="{
@@ -33,13 +7,13 @@
                                 high:       order.PriorityNr === '2',
                                 veryHigh:   order.PriorityNr === '1'
                               }">
-        <a ng-click="viewDetailsOrder()">
+        <a ng-click="viewDetailsOrder(order)">
             <span class="statusBar"></span>
             <span class="navFa fa fa-exclamation-triangle"></span>
 
             <div class="listInfo">
                 <div class="leftSide">
-                    <span class="">{{order.Id}}</span>
+                    <span class="">{{order.OrderId}}</span>
                     <span class="listCustomer">{{order.Name}}</span>
                 </div>
                 <div class="rightSide">
