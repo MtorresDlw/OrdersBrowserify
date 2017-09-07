@@ -6,7 +6,7 @@
 
     <span class="infoTxt">
         {{order.Status}}
-        <!--<span ng-if="!order.Status">none</span>-->
+        <span ng-if="!order.Status">none</span>
     </span>
 
     <span class="infoLabel">
@@ -14,7 +14,8 @@
     </span>
 
     <span class="infoTxt">
-
+        {{order.CreatedBy}}
+        <span ng-if="!order.CreatedBy">none</span>
     </span>
 
     <span class="infoLabel">
@@ -22,15 +23,24 @@
     </span>
 
     <span class="infoTxt">
-
+        {{order.Description}}
+        <span ng-if="!order.Description">none</span>
     </span>
 
     <span class="infoLabel">
         Order Priority
     </span>
 
-    <span class="infoTxt">
-
+    <span class="infoTxt"
+                ng-class=" {
+                             low: order.PriorityNr === '4',
+                             medium: order.PriorityNr === '3',
+                             high: order.PriorityNr === '2',
+                             veryHigh: order.PriorityNr === '1'
+                            }">
+        <span class="navFa fa fa-exclamation-triangle"></span>
+        <span class="fa-priority">{{order.PriorityNr}}</span>
+        <span ng-if="!order.PriorityNr">none</span>
     </span>
 
     <span class="infoLabel">
@@ -38,7 +48,8 @@
     </span>
 
     <span class="infoTxt">
-
+        {{order.StartDate | dateFilter }}
+        <span ng-if="!order.StartDate">none</span>
     </span>
 
     <span class="infoLabel">
@@ -46,6 +57,7 @@
     </span>
 
     <span class="infoTxt">
-
+        {{order.FinishDate | dateFilter }}
+        <span ng-if="!order.FinishDate">none</span>
     </span>
 </div>

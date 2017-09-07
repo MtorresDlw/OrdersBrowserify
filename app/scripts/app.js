@@ -9,9 +9,11 @@ require('angular-ui-router');
 
 require('./controllers');
 require('./directives');
+require('./filters');
 
 angular
-    .module('ordersApp', ['ngAnimate', 'ngTouch', 'ui.bootstrap','ui.router', 'ordersApp.controllers', 'ordersApp.directives'])
+    .module('ordersApp', ['ngAnimate', 'ngTouch', 'ui.bootstrap','ui.router', 'ordersApp.controllers', 'ordersApp.directives',
+            'ordersApp.filters'])
     .config(function($stateProvider) {
 
         $stateProvider
