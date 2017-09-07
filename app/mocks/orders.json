@@ -8,50 +8,71 @@
         "Description": "",
         "LocationNr": "M01-0G-01-01-SLDO",
         "EquipmentNr": "",
-        "CustomerNr": "00650",
         "ContactPersonNr": "",
         "StartDate": "20151002",
         "StartTime": "PT11H00M00S",
         "FinishDate": "20151002",
         "FinishTime": "PT13H00M00S",
         "LongText": "",
-        "WorkCenter": "FM-01-02"
+        "WorkCenter": "FM-01-02",
+        "Customer": {
+            "Number": "00650",
+            "Name": "BBS-RIVA",
+            "Street": "Route d'Angular",
+            "PostalCode": "44000",
+            "City": "Nantes",
+            "Country": "FR"
+        }
     },
     {
         "OrderId": "0002",
         "Name": "Order Two",
-        "OrderNr": "4000021",
-        "Status": "REL  MANC NMAT PROD SETC",
-        "PriorityNr": "3",
+        "OrderNr": "4000025",
+        "Status": "REL  MANC NMAT PRC  SETC",
+        "PriorityNr": "2",
         "Description": "",
         "LocationNr": "M01-0G-01-01-SLDO",
         "EquipmentNr": "",
-        "CustomerNr": "00210",
         "ContactPersonNr": "",
-        "StartDate": "20151501",
+        "StartDate": "20151002",
         "StartTime": "PT11H00M00S",
         "FinishDate": "20151002",
         "FinishTime": "PT13H00M00S",
         "LongText": "",
-        "WorkCenter": "FM-01-02"
+        "WorkCenter": "FM-01-02",
+        "Customer": {
+            "Number": "00650",
+            "Name": "BBS-RIVA",
+            "Street": "Route d'Angular",
+            "PostalCode": "44000",
+            "City": "Nantes",
+            "Country": "FR"
+        }
     },
     {
         "OrderId": "0003",
         "Name": "Order Three",
-        "OrderNr": "4000023",
-        "Status": "REL  MANC NMAT PROD SETC",
+        "OrderNr": "4000026",
+        "Status": "REL  MANC NMAT PRC  SETC",
         "PriorityNr": "4",
         "Description": "",
         "LocationNr": "M01-0G-01-01-SLDO",
         "EquipmentNr": "",
-        "CustomerNr": "00315",
         "ContactPersonNr": "",
-        "StartDate": "20162404",
+        "StartDate": "20151002",
         "StartTime": "PT11H00M00S",
         "FinishDate": "20151002",
         "FinishTime": "PT13H00M00S",
         "LongText": "",
-        "WorkCenter": "FM-01-02"
+        "WorkCenter": "FM-01-02",
+        "Customer": {
+            "Number": "00650",
+            "Name": "BBS-RIVA",
+            "Street": "Route d'Angular",
+            "PostalCode": "44000",
+            "City": "Nantes",
+            "Country": "FR"
+        }
     }
 ]
 

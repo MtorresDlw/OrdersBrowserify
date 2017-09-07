@@ -61,3 +61,16 @@
         <span ng-if="!order.FinishDate">none</span>
     </span>
 </div>
+
+<div class="infoHalf">
+    <span class="infoLabel">Customer Name</span>
+    <span class="infoTxt">
+        <span>{{ order.Customer.Name }}</span>
+        <span ng-if="!order.Customer.Name">none</span>
+    </span>
+
+    <span class="infoLabel">Customer Adress</span>
+    <span class="infoTxt">
+        <span>{{ order.Customer.Street }}</span>
+    </span>
+</div>

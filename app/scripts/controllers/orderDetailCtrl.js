@@ -4,7 +4,10 @@ module.exports = function($scope, $state, $stateParams) {
 
     //Récupération de notre objet JSON :
     $scope.order = $stateParams.order;
-    console.log($scope.order);
+    //console.log($scope.order);
+
+    $scope.order.Customer = $stateParams.order.Customer;
+    //console.log($scope.order);
 
     /****************************************/
 

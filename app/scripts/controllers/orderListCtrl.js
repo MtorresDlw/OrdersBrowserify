@@ -18,7 +18,7 @@ module.exports = function($scope, $state, $http) {
 
     //View the details of an Order :
     $scope.viewDetailsOrder = function viewDetailsOrder(order){
-        $state.go('orderDetail', { order: order});
+        $state.go('orderDetail', { order: order, order.Customer});
     };
 
     //Sort on Customer :

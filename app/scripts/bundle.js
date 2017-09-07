@@ -158,7 +158,10 @@ module.exports = function($scope, $state, $stateParams) {
 
     //Récupération de notre objet JSON :
     $scope.order = $stateParams.order;
-    console.log($scope.order);
+    //console.log($scope.order);
+
+    $scope.order.Customer = $stateParams.order.Customer;
+    //console.log($scope.order);
 
     /****************************************/
 
@@ -361,11 +364,13 @@ module.exports = function(){
         return resultDate;
     };
 };
+
 },{}],18:[function(require,module,exports){
 'use strict';
 
 angular.module('ordersApp.filters', [])
     .filter('dateFilter', require('./dateFilter'));
+
 },{"./dateFilter":17}],19:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.6
