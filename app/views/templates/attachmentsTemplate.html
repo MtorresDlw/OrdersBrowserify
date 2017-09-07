@@ -1,0 +1,18 @@
+<div class="attachment" ng-click="gotoAttachment();">
+
+    <div class="attachment-icon">
+        <span class="fa fa-file-o" ng-class="{'fa-file-image-o':document.MimeType==='image/jpeg'||document.MimeType==='image/png',
+            'fa-file-pdf-o': document.MimeType === 'application/pdf'}">
+        </span>
+    </div>
+
+    <div class="attachment-name">
+        <span ng-if="document.FileName">FileName</span>
+        <span ng-if="!document.FileName">DocumentId</span>
+    </div>
+
+    <div class="attachment-download">
+        <span class="fa fa-chevron-right"></span>
+    </div>
+
+</div>

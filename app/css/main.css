@@ -760,5 +760,25 @@ header .header-container {
 .tableContainer .loader .fa-spinner {
   font-size: 38px;
 }
+.table > thead .table-header {
+  background-color: #322777;
+  color: #FFA500;
+}
+.table > thead .table-header-title {
+  background-color: #bfd5f3;
+  color: #0c3182;
+}
+.table > thead > tr > th {
+  text-align: left;
+}
+.table > thead .table-header th {
+  padding-left: 50px;
+}
+.table > tbody > tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+.global_table_content {
+  margin-top: 6%;
+}
 
 /*# sourceMappingURL=main.css.map */

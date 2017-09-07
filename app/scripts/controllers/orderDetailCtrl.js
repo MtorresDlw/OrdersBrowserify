@@ -2,8 +2,11 @@
 
 module.exports = function($scope, $state, $stateParams) {
 
+    //Récupération de notre objet JSON :
     $scope.order = $stateParams.order;
     console.log($scope.order);
+
+    /****************************************/
 
     /*
     * MENU NAVIGATION
@@ -28,6 +31,14 @@ module.exports = function($scope, $state, $stateParams) {
     $scope.goToServiceReport = function() {
         $state.go('orderServiceReport');
     }
+
+    /****************************************/
+
+    //Filter uppercase :
+    $scope.Equipements = "Equipements";
+    $scope.Markings = "Markings";
+
+    /****************************************/
 
     //Test call orderDetailCtrl in console mode :
     console.log("contrôleur orderDetailCtrl chargé !");
