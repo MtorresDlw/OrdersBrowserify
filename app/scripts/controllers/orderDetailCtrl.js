@@ -38,6 +38,10 @@ module.exports = function($scope, $state, $stateParams) {
     $scope.Equipements = "Equipements";
     $scope.Markings = "Markings";
 
+    $scope.gotoAttachment = function gotoAttachment() {
+        //TODO
+    }
+
     /****************************************/
 
     //Test call orderDetailCtrl in console mode :
