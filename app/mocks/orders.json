@@ -21,7 +21,7 @@
             "Street": "Route d'Angular",
             "PostalCode": "44000",
             "City": "Nantes",
-            "Country": "FR"
+            "Country": "FRANCE"
         }
     },
     {
@@ -34,7 +34,7 @@
         "LocationNr": "M01-0G-01-01-SLDO",
         "EquipmentNr": "",
         "ContactPersonNr": "",
-        "StartDate": "20151002",
+        "StartDate": "20151018",
         "StartTime": "PT11H00M00S",
         "FinishDate": "20151002",
         "FinishTime": "PT13H00M00S",
@@ -42,11 +42,11 @@
         "WorkCenter": "FM-01-02",
         "Customer": {
             "Number": "00650",
-            "Name": "BBS-RIVA",
+            "Name": "WBC-WEST",
             "Street": "Route d'Angular",
             "PostalCode": "44000",
             "City": "Nantes",
-            "Country": "FR"
+            "Country": "FRANCE"
         }
     },
     {
@@ -59,7 +59,7 @@
         "LocationNr": "M01-0G-01-01-SLDO",
         "EquipmentNr": "",
         "ContactPersonNr": "",
-        "StartDate": "20151002",
+        "StartDate": "20151025",
         "StartTime": "PT11H00M00S",
         "FinishDate": "20151002",
         "FinishTime": "PT13H00M00S",
@@ -67,11 +67,11 @@
         "WorkCenter": "FM-01-02",
         "Customer": {
             "Number": "00650",
-            "Name": "BBS-RIVA",
+            "Name": "MTO-STRATEGY",
             "Street": "Route d'Angular",
             "PostalCode": "44000",
             "City": "Nantes",
-            "Country": "FR"
+            "Country": "FRANCE"
         }
     }
 ]

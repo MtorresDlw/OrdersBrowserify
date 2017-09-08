@@ -760,6 +760,10 @@ header .header-container {
 .tableContainer .loader .fa-spinner {
   font-size: 38px;
 }
+.table-customer {
+  border-collapse: separate;
+  empty-cells: hide;
+}
 .table > thead .table-header {
   background-color: #322777;
   color: #FFA500;
@@ -774,11 +778,25 @@ header .header-container {
 .table > thead .table-header th {
   padding-left: 50px;
 }
-.table > tbody > tr:nth-of-type(odd) {
-  background-color: #f2f2f2;
+.table-markings > tbody > tr:nth-of-type(odd),
+.table-equipements > tbody > tr:nth-of-type(odd) {
+  background-color: #e8eefd;
 }
 .global_table_content {
-  margin-top: 6%;
+  margin-top: 2%;
+}
+.table-information > tbody > tr > td:first-child,
+.table-customer > tbody > tr > td:first-child,
+.table-functional > tbody > tr > td:first-child {
+  background-color: #e8eefd;
+  width: 25%;
+  font-weight: bold;
+  color: #0c3182;
+}
+.table-information > tbody > tr:nth-of-type(odd),
+.table-customer > tbody > tr:nth-of-type(odd),
+.table-functional > tbody > tr:nth-of-type(odd) {
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

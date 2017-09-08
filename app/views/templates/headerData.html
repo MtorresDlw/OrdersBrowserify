@@ -1,5 +1,77 @@
 <!--Header Data-->
-<div class="infoHalf">
+<div class="table-responsive col-lg-12 col-md-12 col-sm-12">
+    <div class="col-lg-6 col-md-6 col-sm-12 global_table_content">
+    <table class="table table-information">
+        <thead>
+            <tr class="table-header">
+                <th colspan="2">Informations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Order Status :</td>
+                <td>{{ order.Status }}</td>
+            </tr>
+            <tr>
+                <td>Order Created By :</td>
+                <td>{{ order.CreatedBy }}</td>
+            </tr>
+            <tr>
+                <td>Order Description :</td>
+                <td>{{ order.Description }}</td>
+            </tr>
+            <tr>
+                <td>Order Priority :</td>
+                <td>{{ order.PriorityNr }}</td>
+            </tr>
+            <tr>
+                <td>Order Date Start :</td>
+                <td>{{ order.StartDate | dateFilter }}</td>
+            </tr>
+            <tr>
+                <td>Order Date End :</td>
+                <td>{{ order.FinishDate | dateFilter }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 global_table_content">
+    <table class="table table-customer">
+        <thead>
+            <tr class="table-header">
+                <th colspan="2">Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Customer Name :</td>
+                <td>{{order.Customer.Name}}</td>
+            </tr>
+            <tr>
+                <td>Customer Number :</td>
+                <td>{{order.Customer.Number}}</td>
+            </tr>
+            <tr>
+                <td>Customer Address :</td>
+                <td>{{order.Customer.Street}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ order.Customer.PostalCode }} {{ order.Customer.City }} </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ order.Customer.Country }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+
+
+<!--<div class="infoHalf">
     <span class="infoLabel">
         Order Status
     </span>
@@ -60,8 +132,9 @@
         {{order.FinishDate | dateFilter }}
         <span ng-if="!order.FinishDate">none</span>
     </span>
-</div>
+</div>-->
 
+<!--
 <div class="infoHalf">
     <span class="infoLabel">Customer Name</span>
     <span class="infoTxt">
@@ -74,3 +147,4 @@
         <span>{{ order.Customer.Street }}</span>
     </span>
 </div>
+-->

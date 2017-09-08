@@ -7,8 +7,9 @@ module.exports = function($scope, $state, $http) {
     };
 
     //Initialisation des variables :
-    $scope.dateCheck = true;
+    $scope.dateCheck = 'true';
     $scope.descriptionCheck = false;
+    $scope.orderByReverse = false;
 
     //Getting All Order from Mocks
     $http.get('mocks/orders.json')
@@ -18,19 +19,21 @@ module.exports = function($scope, $state, $http) {
 
     //View the details of an Order :
     $scope.viewDetailsOrder = function viewDetailsOrder(order){
-        $state.go('orderDetail', { order: order, order.Customer});
+        $state.go('orderDetail', { order: order });
     };
 
     //Sort on Customer :
     $scope.customerToggle = function customerToggle() {
+        $scope.orderByReverse = !$scope.orderByReverse;
         $scope.descriptionCheck = true;
         $scope.dateCheck = false;
     };
 
     //Sort on Date :
     $scope.dateToggle = function dateToggle() {
-        $scope.dateCheck = true;
+        $scope.dateCheck = 'true';
         $scope.descriptionCheck = false;
+        $scope.orderByReverse = !$scope.orderByReverse;
     };
 
     //Affichage console :

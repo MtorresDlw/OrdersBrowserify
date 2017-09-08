@@ -6,4 +6,5 @@ angular.module('ordersApp.directives', [])
     .directive('headerData', require('./headerData'))
     .directive('markingTemplate', require('./markingTemplate'))
     .directive('equipementsTemplate', require('./equipementsTemplate'))
-    .directive('attachmentsTemplate', require('./attachmentsTemplate'));
+    .directive('attachmentsTemplate', require('./attachmentsTemplate'))
+    .directive('functionalLocation', require('./functionalLocation'));
